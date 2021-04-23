@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ethers, Contract , utils} from 'ethers';
 import { Form, Input, Message, Button, Card } from 'semantic-ui-react';
 import Pluto from '../../contracts/Pluto.json';
@@ -122,7 +122,7 @@ function App() {
       txLink = "https://testnet.bscscan.com/tx/" + tx.hash;
     } else if (chainID === 56) {
       txLink = "https://bscscan.com/tx/" + tx.hash;
-    };
+    }
 
     let _tokensAmount = await pluto.getTokens(beneficiary);
     _tokensAmount = utils.formatUnits(_tokensAmount, 9);
@@ -148,7 +148,7 @@ function App() {
       txLink = "https://testnet.bscscan.com/tx/" + tx.hash;
     } else if (chainID === 56) {
       txLink = "https://bscscan.com/tx/" + tx.hash;
-    };
+    }
 
     setTxnHash(tx.hash);
     setTxnLink(txLink);
@@ -166,7 +166,7 @@ function App() {
       txLink = "https://testnet.bscscan.com/tx/" + tx.hash;
     } else if (chainID === 56) {
       txLink = "https://bscscan.com/tx/" + tx.hash;
-    };
+    }
 
     setTxnHash(tx.hash);
     setTxnLink(txLink);
