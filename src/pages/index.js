@@ -429,6 +429,16 @@ const IndexPage = props => {
             >
               FAQ
             </Button>
+            <Button
+              outlined
+              to="/presales"
+              as={Link}
+              style={{
+                fontSize: '20px'
+              }}
+            >
+              Presales
+            </Button>
           </StyledItemRow>
         </StyledTitle>
         <ProtocolData />
