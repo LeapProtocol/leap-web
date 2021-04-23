@@ -104,7 +104,7 @@ module.exports = {
           // docs: require.resolve(`./src/layouts/docs`),
           // blog: require.resolve(`./src/layouts/blogPost`),
           faq: require.resolve(`./src/layouts/faq`),
-          whitepaper: require.resolve(`./src/layouts/paper`)
+          paper: require.resolve(`./src/layouts/paper`)
         },
         remarkPlugins: [require(`remark-math`)],
         rehypePlugins: [require(`rehype-katex`)],
