@@ -479,16 +479,12 @@ const App = props => {
       />
       <StyledBody>
         <StyledTitle>
-          <StyledBodyTitle>Community-driven Fair Token Initiative</StyledBodyTitle>
+          <StyledBodyTitle>Presales</StyledBodyTitle>
             <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
               <p>Guaranteed transparency & fairness for millions of users.</p>
               <p>LEAP is not what the community wants. LEAP is about the community; LEAP is about YOU.</p> 
           </StyledBodySubTitle>
         </StyledTitle>
-      </StyledBody>
-      <div className="App">
-        <h1>Presales</h1>
-        <br></br>
 
         <Message hidden={connection} error={!connection} header="Opps!" content={"Please connect to BSC through Metamask!"} />
 
@@ -562,8 +558,10 @@ const App = props => {
         <h3>
           Transaction hash: <a href={txnLink}>{txnHash ?  txnHash : " "}</a>
         </h3>
+      </StyledBody>
 
-      </div>
+
+        
     </Layout>
   );
 }
