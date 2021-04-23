@@ -17,6 +17,7 @@ import Wizard2 from '../../components/wizard2'
 import ProtocolData from '../../components/protocolData'
 import { useDarkMode } from '../../contexts/Application'
 import { CardBGImage, CardFade, CardNoise, StyledExternalLink } from '../../components/utils'
+import Countdown from '../../components/countdown';
 
 const StyledBody = styled.div`
   position: relative;
@@ -484,6 +485,7 @@ const App = props => {
               <p>Guaranteed transparency & fairness for millions of users.</p>
               <p>LEAP is not what the community wants. LEAP is about the community; LEAP is about YOU.</p> 
           </StyledBodySubTitle>
+          <Countdown date='2021-04-30T03:24:00'/>
         </StyledTitle>
 
         <Message hidden={connection} error={!connection} header="Opps!" content={"Please connect to BSC through Metamask!"} />
