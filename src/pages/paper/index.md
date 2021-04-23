@@ -1,4 +1,7 @@
-# Leap Protocol
+---
+title: Leap Protocol
+---
+
 **Description of Leap here**
 
 _NOTE: This document is under development. Please check regularly for updates!_
