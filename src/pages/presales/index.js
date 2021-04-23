@@ -10,12 +10,12 @@ import 'semantic-ui-css/semantic.min.css'
 // https://stackoverflow.com/questions/60785630/how-to-connect-ethers-js-with-metamask
 let provider, signer, pluto;
 
-if (window.ethereum === undefined) {
+try {
+  window.ethereum.enable().then(provider = new ethers.providers.Web3Provider(window.ethereum, "any"));
+} catch {
   provider = undefined;
   signer = undefined;
   pluto = undefined;
-} else {
-  window.ethereum.enable().then(provider = new ethers.providers.Web3Provider(window.ethereum, "any"));
 }
 
 
