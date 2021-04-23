@@ -137,7 +137,7 @@ const Docs = props => {
               description={node.excerpt}
             />
           )
-        })}
+        })} */}
       <StyledDocs id="docs-header">
         <span>
           <StyledPageTitle>
@@ -149,7 +149,7 @@ const Docs = props => {
             <StyledMDX>{props.children}</StyledMDX>
           </span>
         </span>
-      </StyledDocs> */}
+      </StyledDocs> 
     </Layout>
   )
 }
