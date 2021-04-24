@@ -424,104 +424,104 @@ const App = props => {
       />
 
       <StyledBody>
-      <StyledTitle>
-        <StyledBodyTitle>Presales</StyledBodyTitle>
-          <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
-            <p>Guaranteed transparency & fairness for millions of users.</p>
-            <p>LEAP is not what the community wants. LEAP is about the community; LEAP is about YOU.</p> 
-        </StyledBodySubTitle>
-        <Countdown date='2021-04-30T03:24:00'/>
-      </StyledTitle>
+        <StyledTitle>
+          <StyledBodyTitle>Presales</StyledBodyTitle>
+            <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
+              <p>Guaranteed transparency & fairness for millions of users.</p>
+              <p>LEAP is not what the community wants. LEAP is about the community; LEAP is about YOU.</p> 
+          </StyledBodySubTitle>
+          <Countdown date='2021-04-30T03:24:00'/>
+        </StyledTitle>
 
-      <Button variant="outlined" color={connection ? "primary" : "secondary"} onClick={getProvider}>{connection ? "Connected" :"Connect to Web3"}</Button>
-      <br></br>
+        <Button variant="outlined" color={connection ? "primary" : "secondary"} onClick={getProvider}>{connection ? "Connected" :"Connect to Web3"}</Button>
+        <br></br>
 
-      {connection ? <Alert variant="outlined" severity="info">{"Address: " + signerAddress}</Alert> : <Alert severity="error">Please connect to BSC through your wallet!</Alert>}
-      <br></br>
-      {(!presalesStart || connection) ? <Alert variant="outlined" severity="warning">Presales has not started</Alert> : " "}
-      <br></br>
-      {presalesEnd ? <Alert variant="outlined" severity="warning">Presales has already ended</Alert> : " "}
-      <br></br>
-      <Alert variant="outlined" severity="info">{"Current toal contribution: " + totalContribution + " BNB"}</Alert>
+        {connection ? <Alert variant="outlined" severity="info">{"Address: " + signerAddress}</Alert> : <Alert severity="error">Please connect to BSC through your wallet!</Alert>}
+        <br></br>
+        {(!presalesStart || connection) ? <Alert variant="outlined" severity="warning">Presales has not started</Alert> : " "}
+        <br></br>
+        {presalesEnd ? <Alert variant="outlined" severity="warning">Presales has already ended</Alert> : " "}
+        <br></br>
+        <Alert variant="outlined" severity="info">{"Current toal contribution: " + totalContribution + " BNB"}</Alert>
 
-      <br></br>
-      <Grid>
-        <TextField
-            onChange={handleBeneficiary}
-            label="Beneficiary Address"
-            placeholder="Enter a valid BNB address"
+        <br></br>
+        <Grid>
+          <TextField
+              onChange={handleBeneficiary}
+              label="Beneficiary Address"
+              placeholder="Enter a valid BNB address"
+              variant="outlined"
+              fullWidth={true}
+          />
+
+          <TextField
+            onChange={handleContribution}
+            label="Amount to Contribute (BNB)"
+            placeholder="MAX: 0.5 BNB per address (cumulative)"
             variant="outlined"
             fullWidth={true}
-        />
+            disabled={presalesEnd}
+          />
+        </Grid>
+        <br></br>
 
-        <TextField
-          onChange={handleContribution}
-          label="Amount to Contribute (BNB)"
-          placeholder="MAX: 0.5 BNB per address (cumulative)"
-          variant="outlined"
-          fullWidth={true}
-          disabled={presalesEnd}
-        />
-      </Grid>
-      <br></br>
+        {indvCap ? <Alert error>This transaction will fail because you exceeded individual limit. Enter a lower amount</Alert> : " "}
 
-      {indvCap ? <Alert error>This transaction will fail because you exceeded individual limit. Enter a lower amount</Alert> : " "}
+        <Grid 
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Button color="primary" variant="contained" disabled={!valContribution || !valBeneficiary || !allowBuy || !connection} loading={buyButtonLoading} onClick={buyPresalesTokens}>
+            Buy Tokens!
+          </Button>
+          <Button color="primary" variant="contained" disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection} loading={withdrawButtonLoading} onClick={withdrawPresalesTokens}>
+            Withdraw
+          </Button>
+          <Button color="primary" variant="contained" disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection} loading={refundButtonLoading} onClick={refundCapNotReached}>
+            Refund
+          </Button>
+        </Grid>
 
-      <Grid 
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-      >
-        <Button color="primary" variant="contained" disabled={!valContribution || !valBeneficiary || !allowBuy || !connection} loading={buyButtonLoading} onClick={buyPresalesTokens}>
-          Buy Tokens!
-        </Button>
-        <Button color="primary" variant="contained" disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection} loading={withdrawButtonLoading} onClick={withdrawPresalesTokens}>
-          Withdraw
-        </Button>
-        <Button color="primary" variant="contained" disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection} loading={refundButtonLoading} onClick={refundCapNotReached}>
-          Refund
-        </Button>
-      </Grid>
+        <br></br>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Card className={cardClasses.root}>
+            <CardContent>
+              <Typography className={cardClasses.title} color="textSecondary" gutterBottom>
+                Your stats
+              </Typography>
+              <Typography variant="body2" component="p">
+                  Tokens bought: {tokensAmount}
+              </Typography>
+              <Typography variant="body2" component="p">
+                  BNB contributed: {contributed}
+              </Typography>
+            </CardContent>
+          </Card>
 
-      <br></br>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-      >
-        <Card className={cardClasses.root}>
-          <CardContent>
-            <Typography className={cardClasses.title} color="textSecondary" gutterBottom>
-              Your stats
-            </Typography>
-            <Typography variant="body2" component="p">
-                Tokens bought: {tokensAmount}
-            </Typography>
-            <Typography variant="body2" component="p">
-                BNB contributed: {contributed}
-            </Typography>
-          </CardContent>
-        </Card>
+          <Card className={cardClasses.root}>
+            <CardContent>
+              <Typography className={cardClasses.title} color="textSecondary" gutterBottom>
+                {"Beneficiary's stat"}
+              </Typography>
+              <Typography variant="body2" component="p">
+                  Tokens bought: {beneTokensAmount}
+              </Typography>
+              <Typography variant="body2" component="p">
+                  BNB contributed: {beneContributed}
+              </Typography>
+            </CardContent>
+          </Card>
 
-        <Card className={cardClasses.root}>
-          <CardContent>
-            <Typography className={cardClasses.title} color="textSecondary" gutterBottom>
-              {"Beneficiary's stat"}
-            </Typography>
-            <Typography variant="body2" component="p">
-                Tokens bought: {beneTokensAmount}
-            </Typography>
-            <Typography variant="body2" component="p">
-                BNB contributed: {beneContributed}
-            </Typography>
-          </CardContent>
-        </Card>
+        </Grid>
 
-      </Grid>
-
-      {txnHash ? <Alert severity="info">{"Verify you transaction here"} content={<a href={txnLink}>{txnHash}</a>}</Alert> : " "}
+        {txnHash ? <Alert severity="info">{"Verify you transaction here"} content={<a href={txnLink}>{txnHash}</a>}</Alert> : " "}
 
       </StyledBody>
 

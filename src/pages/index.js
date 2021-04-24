@@ -393,8 +393,8 @@ const IndexPage = props => {
           </StyledImgSection>
           <StyledBodyTitle>Community-driven Fair Token Initiative</StyledBodyTitle>
           <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
-          <p>Guaranteed transparency & fairness for millions of users.</p>
-          <p>LEAP is not what the community wants. LEAP is about the community; LEAP is about YOU.</p> 
+          <p>Guaranteed transparency and fairness for all users.</p>
+          <p>LEAP is about the community; LEAP is about YOU.</p> 
           </StyledBodySubTitle>
 
           <StyledItemRow>
@@ -589,7 +589,7 @@ const ProductsSection = props => {
         <StyledExternalLink href={'https://t.me/LeapNow'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.twitter.childImageSharp.fluid} />
         </StyledExternalLink>
-              <StyledExternalLink href={'https://www.reddit.com/r/LeapProtocol/ '} target="_blank">
+        <StyledExternalLink href={'https://www.reddit.com/r/LeapProtocol/ '} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
         </StyledExternalLink>
         </StyledItemRow>

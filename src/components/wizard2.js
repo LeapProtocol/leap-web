@@ -10,21 +10,21 @@ const links = [
       {
         title: 'Q2 2021',
         // link: '/docs/v2/smart-contract-integration/trading-from-a-smart-contract/',
-        description: '-Fair Presales \n-PancakeSwap listing \n-Listing (i.e. CoinGecko, CoinMarketCap) \n-Revamp website \n-Update whitepaper \n-Full-scale marketing campaign \n-Initiate charity initiatives',
+        description: '- Fair Presales \n- PancakeSwap listing \n- Listing (i.e. CoinGecko, CoinMarketCap) \n- Revamp website \n- Update whitepaper \n- Full-scale marketing campaign \n-Initiate charity initiatives',
         tag: 'reference',
         icon: '🗓️'
       },
       {
         title: 'Q3 2021',
         // link: '/docs/v2/smart-contract-integration/providing-liquidity/',
-        description: '-Listing to exchange (i.e. Coinbase, Binance) \n-Setup of a base for LEAPers in Singapore \n-Expand core team to include a dedicated legal, finance & charity arm \n-Expand charity initiatives through community \n-R&D & Implementation of NFT',
+        description: '- Listing to exchange (i.e. Coinbase, Binance) \n- Setup of a base for LEAPers in Singapore \n- Expand core team to include a dedicated legal, finance & charity arm \n- Expand charity initiatives through community \n- R&D & Implementation of NFT',
         tag: 'tutorial',
         icon: '🗓️'
       },
       {
         title: 'Q4 2021',
         // link: '/docs/v2/core-concepts/flash-swaps/',
-        description: '-Become a globally recognise charity institution \n-Incorporate charity into the core of LEAP \n-Full-on incorporation of various dApps including NFT & DeFi',
+        description: '- Become a globally recognise charity institution \n- Incorporate charity into the core of LEAP \n- Full-on incorporation of various dApps including NFT & DeFi',
         tag: 'guide',
         icon: '🗓️'
       }

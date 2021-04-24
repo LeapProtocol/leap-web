@@ -234,7 +234,7 @@ const Header = props => {
 var data = [
             {"name":"White Paper" , "link":"/paper"},
             {"name":"How to Buy" , "link":""}, 
-            {"name":"Leap Contract" , "link":""}, 
+            {"name":"LEAP Contract" , "link":""}, 
            ]
 
   return (
@@ -247,7 +247,7 @@ var data = [
           }}
         >
           <StyledUni />
-          <HeaderText>Leap Protocol</HeaderText>
+          <HeaderText>LEAP Protocol</HeaderText>
         </StyledHomeLink>
       </StyledNavTitleWrapper>
       <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
@@ -273,7 +273,7 @@ var data = [
             target="_blank"
             href=""
           >
-            TAKE THE LEAP
+            Take the LEAP
           </StyledTradeLink>
         )}
       </StyledNav>
