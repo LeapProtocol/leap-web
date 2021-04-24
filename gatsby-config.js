@@ -5,6 +5,7 @@ require('dotenv').config({
 })
 
 module.exports = {
+  pathPrefix: "/leap-web",
   siteMetadata: {
     title: `Leap Protocol`,
     description: `Automated liquidity protocol on Ethereum`,
@@ -41,29 +42,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blog`,
-        path: `${__dirname}/src/pages/blog/`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `docs`,
-        path: `${__dirname}/src/pages/docs/`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `faq`,
         path: `${__dirname}/src/pages/faq/`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `presales`,
-        path: `${__dirname}/src/pages/presales/`
       }
     },
     {
@@ -108,8 +88,6 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
           default: require.resolve('./src/layouts'),
-          // docs: require.resolve(`./src/layouts/docs`),
-          // blog: require.resolve(`./src/layouts/blogPost`),
           faq: require.resolve(`./src/layouts/faq`),
           paper: require.resolve(`./src/layouts/paper`),
           presales: require.resolve(`./src/layouts/presales`)
