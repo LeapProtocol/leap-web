@@ -74,7 +74,7 @@ const InlineCard2 = props => {
   return (
     <StyledMiniCards {...props} style={{ backgroundColor: props.backgroundColor, color: props.color }} to={props.to}>
       {/* {props.isIconImage &&  */}
-      <Tag><img src={props.icon} style={{borderRadius:"50px", background:"rgba(255,255,255,0.1)"}} /></Tag>
+      <Tag><img src={props.icon} /></Tag>
       {/* } */}
       {/* {!props.isIconImage && 
       <Tag>{props.icon}</Tag>

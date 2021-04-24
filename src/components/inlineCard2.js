@@ -70,6 +70,7 @@ const StyledMiniCardDesc = styled.p`
   font-weight: 400;
   padding-bottom: 1rem;
   white-space:pre-wrap;
+  text-align:left;
 `
 
 const InlineCard = props => {

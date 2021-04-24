@@ -106,7 +106,7 @@ const StyledBodySubText = styled.h3`
 
 const StyledBannerImage = styled(Img)`
   width: 100%;
-  height: 100%;
+  height: 90%;
   min-width: 260px;
   max-width: 720px;
   background-color: none;
@@ -358,7 +358,7 @@ const IndexPage = props => {
           }
         }
       }
-      thin: file(relativePath: { eq: "thin.jpg" }) {
+      thin: file(relativePath: { eq: "Leap.png" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
@@ -388,7 +388,7 @@ const IndexPage = props => {
                 <NewPill>Announcing Uniswap V3</NewPill>
                 More details ↗
               </div> */}
-              <StyledHeroImage fadeIn={false} fluid={data.thin.childImageSharp.fluid} />
+              <StyledHeroImage style={{position:"initial"}} fadeIn={false} fluid={data.thin.childImageSharp.fluid} />
             </MiniNewInfo>
           </StyledImgSection>
           <StyledBodyTitle>Community-driven Fair Token Initiative</StyledBodyTitle>
