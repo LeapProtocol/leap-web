@@ -186,7 +186,7 @@ const StyledItemRow = styled.nav`
 
 const StyledHeroImage = styled(Img)`
   width: 75vw;
-  height: 320px;
+  height: 360px;
   /* max-width: 960px; */
   background-color: none;
   border-radius: 12px;
