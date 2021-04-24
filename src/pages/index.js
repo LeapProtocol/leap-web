@@ -382,15 +382,15 @@ const IndexPage = props => {
       />
       <StyledBody>
         <StyledTitle>
-          <StyledImgSection>
+          {/*<StyledImgSection>
             <MiniNewInfo to="">
-              {/* <div style={{ display: 'flex', alignItems: 'center' }}>
+               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <NewPill>Announcing Uniswap V3</NewPill>
                 More details ↗
-              </div> */}
+              </div>
               <StyledHeroImage style={{position:"initial"}} fadeIn={false} fluid={data.thin.childImageSharp.fluid} />
             </MiniNewInfo>
-          </StyledImgSection>
+          </StyledImgSection> */}
           <StyledBodyTitle>Community-driven Fair Token Initiative</StyledBodyTitle>
           <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
           <p>Guaranteed transparency and fairness for all users.</p>
