@@ -10,21 +10,14 @@ import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
 import styled from 'styled-components'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
 import Layout from '../../layouts'
 import SEO from '../../components/seo'
-import BG from '../../components/bg'
-import Wizard from '../../components/wizard'
-import Wizard2 from '../../components/wizard2'
-import ProtocolData from '../../components/protocolData'
-import { useDarkMode } from '../../contexts/Application'
-import { CardBGImage, CardFade, CardNoise, StyledExternalLink } from '../../components/utils'
 import Countdown from '../../components/countdown';
 
 let provider = undefined;
 let signer = undefined;
 let leap = undefined;
+let web3 = undefined;
 
 const useCardStyles = makeStyles({
   root: {
@@ -258,6 +251,11 @@ const App = props => {
   }, []);
 
   const getProvider = async (e) => {
+
+    if (connection) {
+      web3.clearCachedProvider();
+    }
+
     let providerOptions = {
       walletconnect: {
         package: WalletConnectProvider,
@@ -265,7 +263,7 @@ const App = props => {
           rpc: {
             // mainnet: https://bsc-dataseed.binance.org/
             // testnet: https://data-seed-prebsc-1-s1.binance.org:8545/
-            56: 'https://data-seed-prebsc-1-s1.binance.org:8545/'
+            56: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
           },
           network: 'binance',
           chainId: 56,
@@ -276,16 +274,18 @@ const App = props => {
 
     const web3Modal = new Web3Modal({
       network: "binance",
-      cacheProvider: true, 
+      cacheProvider: false, 
       providerOptions, 
     });
 
     let _provider = await web3Modal.connect();
+    web3 = web3Modal;
     provider = new ethers.providers.Web3Provider(_provider, "any");
     const _chainID = (await provider.getNetwork())["chainId"];
     signer = provider.getSigner();
 
     setChainID(_chainID);
+
   };
 
   const buyPresalesTokens = async (e) => {
