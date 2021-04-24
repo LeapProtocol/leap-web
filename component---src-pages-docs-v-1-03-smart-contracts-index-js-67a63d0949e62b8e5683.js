@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[42],{v5i8:function(n,t,r){"use strict";r.r(t),r.d(t,"default",(function(){return c}));var e=r("q1tI"),o=r.n(e),a=r("YwZP");function c(n){var t=n.path;return o.a.createElement(a.Redirect,{from:t,to:t+"factory/",noThrow:!0})}}}]);
-//# sourceMappingURL=component---src-pages-docs-v-1-03-smart-contracts-index-js-67a63d0949e62b8e5683.js.map

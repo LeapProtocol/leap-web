@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[49],{L5kv:function(n,t,o){"use strict";o.r(t),o.d(t,"default",(function(){return a}));var r=o("q1tI"),e=o.n(r),w=o("YwZP");function a(n){var t=n.path;return e.a.createElement(w.Redirect,{from:t,to:t+"how-uniswap-works/",noThrow:!0})}}}]);
+//# sourceMappingURL=component---src-pages-docs-v-2-01-protocol-overview-index-js-237d82f39800c7799286.js.map
