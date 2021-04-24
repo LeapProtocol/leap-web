@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextField, Grid, Card, CardContent } from '@material-ui/core';
+import { Button, TextField, Grid, Card, CardContent, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Alert } from '@material-ui/lab';
@@ -264,6 +264,7 @@ const App = props => {
             // mainnet: https://bsc-dataseed.binance.org/
             // testnet: https://data-seed-prebsc-1-s1.binance.org:8545/
             56: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+            97: 'https://data-seed-prebsc-1-s1.binance.org:8545/'
           },
           network: 'binance',
           chainId: 56,
@@ -438,7 +439,7 @@ const App = props => {
 
         {connection ? <Alert variant="outlined" severity="info">{"Address: " + signerAddress}</Alert> : <Alert severity="error">Please connect to BSC through your wallet!</Alert>}
         <br></br>
-        {(!presalesStart || connection) ? <Alert variant="outlined" severity="warning">Presales has not started</Alert> : " "}
+        {(!presalesStart && connection) ? <Alert variant="outlined" severity="warning">Presales has not started</Alert> : " "}
         <br></br>
         {presalesEnd ? <Alert variant="outlined" severity="warning">Presales has already ended</Alert> : " "}
         <br></br>
@@ -465,7 +466,7 @@ const App = props => {
         </Grid>
         <br></br>
 
-        {indvCap ? <Alert error>This transaction will fail because you exceeded individual limit. Enter a lower amount</Alert> : " "}
+        {indvCap ? <Alert severity="error">This transaction will fail because you exceeded individual limit. Enter a lower amount</Alert> : " "}
 
         <Grid 
           container
@@ -473,15 +474,26 @@ const App = props => {
           justify="center"
           alignItems="center"
         >
-          <Button color="primary" variant="contained" disabled={!valContribution || !valBeneficiary || !allowBuy || !connection} loading={buyButtonLoading} onClick={buyPresalesTokens}>
-            Buy Tokens!
-          </Button>
-          <Button color="primary" variant="contained" disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection} loading={withdrawButtonLoading} onClick={withdrawPresalesTokens}>
-            Withdraw
-          </Button>
-          <Button color="primary" variant="contained" disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection} loading={refundButtonLoading} onClick={refundCapNotReached}>
-            Refund
-          </Button>
+          {buyButtonLoading ? 
+            <CircularProgress/> : 
+            <Button color="primary" variant="contained" disabled={!valContribution || !valBeneficiary || !allowBuy || !connection} onClick={buyPresalesTokens}>
+              Buy Tokens
+            </Button>
+          }
+          {" "}
+          {withdrawButtonLoading ?
+            <CircularProgress/> :
+            <Button color="primary" variant="contained" disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection} onClick={withdrawPresalesTokens}>
+              Withdraw
+            </Button>
+          }
+          {" "}
+          {refundButtonLoading ?
+            <CircularProgress/> :
+            <Button color="primary" variant="contained" disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection} onClick={refundCapNotReached}>
+              Refund
+            </Button>
+          }   
         </Grid>
 
         <br></br>
@@ -521,7 +533,7 @@ const App = props => {
 
         </Grid>
 
-        {txnHash ? <Alert severity="info">{"Verify you transaction here"} content={<a href={txnLink}>{txnHash}</a>}</Alert> : " "}
+        {txnHash ? <Alert severity="info">{"Verify you transaction here"} {<a href={txnLink}>{txnHash}</a>}</Alert> : " "}
 
       </StyledBody>
 
