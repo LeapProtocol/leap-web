@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { ethers, Contract , utils} from 'ethers';
-import { Form, Input, Message, Card } from 'semantic-ui-react';
-import Pluto from '../../contracts/Pluto.json';
-import 'semantic-ui-css/semantic.min.css'
+import { Button, TextField, Grid, Card, CardContent } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { Alert } from '@material-ui/lab';
 
+import Leap from '../../contracts/Leap.json';
+import { ethers, Contract , utils} from 'ethers';
+import Web3Modal from "web3modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 
 import styled from 'styled-components'
 import { useStaticQuery, graphql, Link } from 'gatsby'
@@ -11,13 +15,33 @@ import Img from 'gatsby-image'
 import Layout from '../../layouts'
 import SEO from '../../components/seo'
 import BG from '../../components/bg'
-import { Button } from '../../components/button'
 import Wizard from '../../components/wizard'
 import Wizard2 from '../../components/wizard2'
 import ProtocolData from '../../components/protocolData'
 import { useDarkMode } from '../../contexts/Application'
 import { CardBGImage, CardFade, CardNoise, StyledExternalLink } from '../../components/utils'
 import Countdown from '../../components/countdown';
+
+let provider = undefined;
+let signer = undefined;
+let leap = undefined;
+
+const useCardStyles = makeStyles({
+  root: {
+    minWidth: 275,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
 
 const StyledBody = styled.div`
   position: relative;
@@ -27,7 +51,7 @@ const StyledBody = styled.div`
   align-items: center;
   padding-bottom: 8rem;
   margin-bottom: 2rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
+  // border-bottom: 1px solid ${({ theme }) => theme.colors.grey2};
   @media (max-width: 960px) {
     margin-bottom: 1rem;
     padding: 2rem;
@@ -45,7 +69,6 @@ const StyledTitle = styled.div`
   margin-bottom: 6rem;
   @media (max-width: 960px) {
     margin: 0 auto;
-
     /* margin: 3rem 0 1rem 0; */
     /* margin-bottom: 4rem; */
   }
@@ -63,7 +86,6 @@ const StyledBodyTitle = styled.h1`
   @media (max-width: 1024px) {
     margin: 2rem 0 3rem 0;
   }
-
   @media (max-width: 640px) {
     width: 100%;
     margin: 2rem 0 2rem 0;
@@ -71,7 +93,6 @@ const StyledBodyTitle = styled.h1`
     text-align: left;
     font-size: 58px;
   }
-
   @media (max-width: 440px) {
     font-weight: 500;
     text-align: left;
@@ -101,20 +122,17 @@ const StyledSectionFlex = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-
   @media (max-width: 1024px) {
     padding: 1rem;
     margin-top: 0rem;
     flex-direction: ${({ wrapSmall }) => (!wrapSmall ? 'row' : 'column')};
   }
-
   @media (max-width: 960px) {
     padding: 1rem;
     margin-top: 0rem;
     width: 100%;
     max-width: 450px;
   }
-
   h2 {
     margin-bottom: 0.5rem;
   }
@@ -151,119 +169,9 @@ const StyledItemRow = styled.nav`
 `
 
 const App = props => {
-  const isDark = useDarkMode()
-
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        siteMetadata {
-          siteUrl
-        }
-      }
-      newYear: file(relativePath: { eq: "newyear.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-        }
-      }
-      banner: file(relativePath: { eq: "Banner.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-        }
-      }
-      swap: file(relativePath: { eq: "swap.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      info: file(relativePath: { eq: "info.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      socks: file(relativePath: { eq: "socks.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      sybil: file(relativePath: { eq: "sybil.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      tokenlists: file(relativePath: { eq: "tokenlists.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      discord: file(relativePath: { eq: "discord.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      twitter: file(relativePath: { eq: "twitter.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      reddit: file(relativePath: { eq: "reddit.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      discourse: file(relativePath: { eq: "discourse.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      thin: file(relativePath: { eq: "thin.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
-  // if use this, it does not connect to metamask after build
-  //const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-  // https://stackoverflow.com/questions/60785630/how-to-connect-ethers-js-with-metamask
-  let provider, signer, pluto;
-
-  try {
-    window.ethereum.enable().then(provider = new ethers.providers.Web3Provider(window.ethereum, "any"));
-  } catch {
-    provider = undefined;
-    signer = undefined;
-    pluto = undefined;
-  }
-
-
-
   const [connection, setConnection] = useState(false);
+  const [signerAddress, setSignerAddress] = useState(undefined);
+
   const [totalContribution, setTotalContribution] = useState(0);
   const [chainID, setChainID] = useState(undefined);
 
@@ -293,26 +201,39 @@ const App = props => {
   const [contributed, setContributed] = useState(0);
   const [tokensAmount, setTokenAmounts] = useState(0);
 
+  const cardClasses = useCardStyles();
+
   useEffect(() => {
     const load = setInterval(async () => {
       if (provider !== undefined) {
         const _chainID = (await provider.getNetwork())["chainId"];
+        signer = provider.getSigner();
+        const _address = await signer.getAddress();
+        setSignerAddress(_address);
+
         if (_chainID === 97 || _chainID === 56){
           setConnection(true);
-          const _address = await signer.getAddress();
+          
+          if (leap === undefined) {
+            leap = new Contract(
+              Leap.networks[_chainID].address,
+              Leap.abi,
+              signer
+            )
+          }
 
-          let _tokensAmount = await pluto.getTokens(_address);
+          let _tokensAmount = await leap.getTokens(_address);
           _tokensAmount = utils.formatUnits(_tokensAmount, 9);
 
-          let _contributed = await pluto.getContribution(_address);
+          let _contributed = await leap.getContribution(_address);
           _contributed = utils.formatEther(_contributed);
 
-          let _totalContribution = await pluto.weiRaised();
+          let _totalContribution = await leap.weiRaised();
           _totalContribution = utils.formatEther(_totalContribution);
 
-          const _presalesStart = await pluto.getPresalesStarted();
-          const _presalesEnd = await pluto.getPresalesEnded();
-          const _capReached = await pluto.capReached();
+          const _presalesStart = await leap.getPresalesStarted();
+          const _presalesEnd = await leap.getPresalesEnded();
+          const _capReached = await leap.capReached();
 
           const _allowBuy = _presalesStart && !_presalesEnd;
 
@@ -323,41 +244,54 @@ const App = props => {
           setPresalesEnd(_presalesEnd);
           setAllowBuy(_allowBuy);
           setCapReached(_capReached);
+          setConnection(true);
         } else {
           setConnection(false);
         }
+
       } else {
         setConnection(false);
       }
     }, 1000);
 
-    const init = async () => {
-      if (provider !== undefined) {
-        const _chainID = (await provider.getNetwork())["chainId"];
-        signer = provider.getSigner();
-
-        pluto = new Contract(
-          Pluto.networks[_chainID].address,
-          Pluto.abi,
-          signer
-        );
-
-        setChainID(_chainID);
-      } else {
-        signer = undefined;
-        pluto = undefined;
-      }
-    }
-
-    init();
-
     return () => clearInterval(load);
   }, []);
+
+  const getProvider = async (e) => {
+    let providerOptions = {
+      walletconnect: {
+        package: WalletConnectProvider,
+        options: {
+          rpc: {
+            // mainnet: https://bsc-dataseed.binance.org/
+            // testnet: https://data-seed-prebsc-1-s1.binance.org:8545/
+            56: 'https://data-seed-prebsc-1-s1.binance.org:8545/'
+          },
+          network: 'binance',
+          chainId: 56,
+          infuraId: "1212",
+        }
+      }
+    };
+
+    const web3Modal = new Web3Modal({
+      network: "binance",
+      cacheProvider: true, 
+      providerOptions, 
+    });
+
+    let _provider = await web3Modal.connect();
+    provider = new ethers.providers.Web3Provider(_provider, "any");
+    const _chainID = (await provider.getNetwork())["chainId"];
+    signer = provider.getSigner();
+
+    setChainID(_chainID);
+  };
 
   const buyPresalesTokens = async (e) => {
     e.preventDefault();
     setBuyButtonLoading(true);
-    const tx = await pluto.buyPresalesTokens(beneficiary, {gasLimit: 500000, value: contribution});
+    const tx = await leap.buyPresalesTokens(beneficiary, {gasLimit: 500000, value: contribution});
     await tx.wait();
 
     let txLink;
@@ -367,10 +301,10 @@ const App = props => {
       txLink = "https://bscscan.com/tx/" + tx.hash;
     }
 
-    let _tokensAmount = await pluto.getTokens(beneficiary);
+    let _tokensAmount = await leap.getTokens(beneficiary);
     _tokensAmount = utils.formatUnits(_tokensAmount, 9);
 
-    let _contributed = await pluto.getContribution(beneficiary);
+    let _contributed = await leap.getContribution(beneficiary);
     _contributed = utils.formatEther(_contributed);
     
     setBeneContributed(_contributed);
@@ -383,7 +317,7 @@ const App = props => {
   const withdrawPresalesTokens = async (e) => {
     e.preventDefault();
     setWithdrawButtonLoading(true);
-    const tx = await pluto.withdrawPresalesTokens(beneficiary, {gasLimit: 500000});
+    const tx = await leap.withdrawPresalesTokens(beneficiary, {gasLimit: 500000});
     await tx.wait();
 
     let txLink;
@@ -401,8 +335,17 @@ const App = props => {
   const refundCapNotReached = async (e) => {
     e.preventDefault();
     setRefundButtonLoading(true);
-    const tx = await pluto.refund(beneficiary, {gasLimit: 500000});
+    const tx = await leap.refund(beneficiary, {gasLimit: 500000});
     await tx.wait();
+
+    let _tokensAmount = await leap.getTokens(beneficiary);
+    _tokensAmount = utils.formatUnits(_tokensAmount, 9);
+
+    let _contributed = await leap.getContribution(beneficiary);
+    _contributed = utils.formatEther(_contributed);
+    
+    setBeneContributed(_contributed);
+    setBeneTokensAmount(_tokensAmount);    
 
     let txLink;
     if (chainID === 97) {
@@ -418,15 +361,16 @@ const App = props => {
 
   const handleBeneficiary = async (e) => {
     let _beneficiary = e.target.value;
+
     const valid = utils.isAddress(_beneficiary);
     try {
       if (valid) {
         _beneficiary = utils.getAddress(_beneficiary);
 
-        let _tokensAmount = await pluto.getTokens(_beneficiary);
+        let _tokensAmount = await leap.getTokens(_beneficiary);
         _tokensAmount = utils.formatUnits(_tokensAmount, 9);
 
-        let _contributed = await pluto.getContribution(_beneficiary);
+        let _contributed = await leap.getContribution(_beneficiary);
         _contributed = utils.formatEther(_contributed);
         
         setBeneContributed(_contributed);
@@ -451,7 +395,7 @@ const App = props => {
         setContribution(0);
         setIndvCap(false);
       } else {
-        let _contributed = await pluto.getContribution(beneficiary);
+        let _contributed = await leap.getContribution(beneficiary);
         _contributed = utils.formatEther(_contributed);
         const _individualCap = parseFloat(_contribution) + parseFloat(_contributed);
         if (_individualCap > 0.5) {
@@ -478,6 +422,7 @@ const App = props => {
         path={props.location.pathname}
         description={'A fully decentralized protocol for automated liquidity provision on Ethereum'}
       />
+
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Presales</StyledBodyTitle>
@@ -488,82 +433,98 @@ const App = props => {
           <Countdown date='2021-04-30T03:24:00'/>
         </StyledTitle>
 
-        <Message hidden={connection} error={!connection} header="Opps!" content={"Please connect to BSC through Metamask!"} />
+        <Button variant="outlined" color={connection ? "primary" : "secondary"} onClick={getProvider}>{connection ? "Connected" :"Connect to Web3"}</Button>
+        <br></br>
 
-        <Message info hidden={presalesStart || !connection} header="Presales has not started yet" />
-        <Message info hidden={!presalesEnd} header="Presales has already ended" />
-        <Message header={"Current Total Contribution"} content={totalContribution + " BNB"} />
-  
-        <Form>
-          <Form.Field>
-              <label>Beneficiary Address</label>
-              <Input
-                  onChange={handleBeneficiary}
-                  placeholder="Enter a valid BNB address"
-              />
+        {connection ? <Alert variant="outlined" severity="info">{"Address: " + signerAddress}</Alert> : <Alert severity="error">Please connect to BSC through your wallet!</Alert>}
+        <br></br>
+        {(!presalesStart || connection) ? <Alert variant="outlined" severity="warning">Presales has not started</Alert> : " "}
+        <br></br>
+        {presalesEnd ? <Alert variant="outlined" severity="warning">Presales has already ended</Alert> : " "}
+        <br></br>
+        <Alert variant="outlined" severity="info">{"Current toal contribution: " + totalContribution + " BNB"}</Alert>
 
-              <label>Amount to Contribute</label>
-              <Input
-                onChange={handleContribution}
-                placeholder="MAX: 0.5 BNB per address (cumulative)"
-                label="BNB"
-                labelPosition="right"
-                disabled={presalesEnd}
-              />
+        <br></br>
+        <Grid>
+          <TextField
+              onChange={handleBeneficiary}
+              label="Beneficiary Address"
+              placeholder="Enter a valid BNB address"
+              variant="outlined"
+              fullWidth={true}
+          />
 
-              <Button primary disabled={!valContribution || !valBeneficiary || !allowBuy || !connection} loading={buyButtonLoading} onClick={buyPresalesTokens}>
-                Buy Tokens!
-              </Button>
+          <TextField
+            onChange={handleContribution}
+            label="Amount to Contribute (BNB)"
+            placeholder="MAX: 0.5 BNB per address (cumulative)"
+            variant="outlined"
+            fullWidth={true}
+            disabled={presalesEnd}
+          />
+        </Grid>
+        <br></br>
 
-              <Button primary disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection} loading={withdrawButtonLoading} onClick={withdrawPresalesTokens}>
-                Withdraw
-              </Button>
+        {indvCap ? <Alert error>This transaction will fail because you exceeded individual limit. Enter a lower amount</Alert> : " "}
 
-              <Button primary disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection} loading={refundButtonLoading} onClick={refundCapNotReached}>
-                Refund
-              </Button>
-          </Form.Field>
-        </Form>
+        <Grid 
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Button color="primary" variant="contained" disabled={!valContribution || !valBeneficiary || !allowBuy || !connection} loading={buyButtonLoading} onClick={buyPresalesTokens}>
+            Buy Tokens!
+          </Button>
+          <Button color="primary" variant="contained" disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection} loading={withdrawButtonLoading} onClick={withdrawPresalesTokens}>
+            Withdraw
+          </Button>
+          <Button color="primary" variant="contained" disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection} loading={refundButtonLoading} onClick={refundCapNotReached}>
+            Refund
+          </Button>
+        </Grid>
 
-        <Message hidden={!indvCap} error={true} header="Exceed individual limit!" content={"This transaction will fail because you exceeded individual limit. Enter a lower amount"} />
-
-        <Card.Group>
-          <Card
-            header="Your stats"
-            description={
-              <div>
-                <p>
+        <br></br>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+        >
+          <Card className={cardClasses.root}>
+            <CardContent>
+              <Typography className={cardClasses.title} color="textSecondary" gutterBottom>
+                Your stats
+              </Typography>
+              <Typography variant="body2" component="p">
                   Tokens bought: {tokensAmount}
-                </p>
-                <p>
+              </Typography>
+              <Typography variant="body2" component="p">
                   BNB contributed: {contributed}
-                </p>
-              </div>
-            }
-          />
+              </Typography>
+            </CardContent>
+          </Card>
 
-          <Card
-            header="Beneficiary's stats"
-            description={
-              <div>
-                <p>
+          <Card className={cardClasses.root}>
+            <CardContent>
+              <Typography className={cardClasses.title} color="textSecondary" gutterBottom>
+                {"Beneficiary's stat"}
+              </Typography>
+              <Typography variant="body2" component="p">
                   Tokens bought: {beneTokensAmount}
-                </p>
-                <p>
+              </Typography>
+              <Typography variant="body2" component="p">
                   BNB contributed: {beneContributed}
-                </p>
-              </div>
-            }
-          />
-        </Card.Group>
+              </Typography>
+            </CardContent>
+          </Card>
 
-        <h3>
-          Transaction hash: <a href={txnLink}>{txnHash ?  txnHash : " "}</a>
-        </h3>
+        </Grid>
+
+        {txnHash ? <Alert severity="info">{"Verify you transaction here"} content={<a href={txnLink}>{txnHash}</a>}</Alert> : " "}
+
       </StyledBody>
 
-
-        
     </Layout>
   );
 }
