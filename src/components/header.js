@@ -232,11 +232,12 @@ const Header = props => {
   }, [isMenuOpen, updateIsMenuOpen, matches])
 
 var data = [
-            {"name":"White Paper" , "link":"/paper"},
-            // {"name":"How to Buy" , "link":""}, 
-            {"name":"LEAP Contract" , "link":""},
-            {"name":"Presales" , "link":"/presales"},
-           ]
+  {"name":"Presales" , "link":"/presales"},
+  {"name":"White Paper" , "link":"/paper"},
+  // {"name":"How to Buy" , "link":""}, 
+  {"name":"LEAP Contract" , "link":""},
+  {"name":"FAQ","link":"/faq"},
+]
 
   return (
     <StyledHeader open={isMenuOpen} showBG={headerBG}>
