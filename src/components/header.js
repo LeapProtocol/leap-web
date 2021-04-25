@@ -233,8 +233,9 @@ const Header = props => {
 
 var data = [
             {"name":"White Paper" , "link":"/paper"},
-            {"name":"How to Buy" , "link":""}, 
-            {"name":"LEAP Contract" , "link":""}, 
+            // {"name":"How to Buy" , "link":""}, 
+            {"name":"LEAP Contract" , "link":""},
+            {"name":"Presales" , "link":"/presales"},
            ]
 
   return (
@@ -270,8 +271,8 @@ var data = [
               background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
               color: 'white'
             }}
-            target="_blank"
-            href=""
+            to="/presales"
+            as={Link}
           >
             Take the LEAP
           </StyledTradeLink>

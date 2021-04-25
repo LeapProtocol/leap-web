@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextField, Grid, Card, CardContent } from '@material-ui/core';
+import { Button, TextField, Grid, Card, CardContent, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Alert } from '@material-ui/lab';
@@ -10,21 +10,14 @@ import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 
 import styled from 'styled-components'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
 import Layout from '../../layouts'
 import SEO from '../../components/seo'
-import BG from '../../components/bg'
-import Wizard from '../../components/wizard'
-import Wizard2 from '../../components/wizard2'
-import ProtocolData from '../../components/protocolData'
-import { useDarkMode } from '../../contexts/Application'
-import { CardBGImage, CardFade, CardNoise, StyledExternalLink } from '../../components/utils'
 import Countdown from '../../components/countdown';
 
 let provider = undefined;
 let signer = undefined;
 let leap = undefined;
+let web3 = undefined;
 
 const useCardStyles = makeStyles({
   root: {
@@ -258,6 +251,11 @@ const App = props => {
   }, []);
 
   const getProvider = async (e) => {
+
+    if (connection) {
+      web3.clearCachedProvider();
+    }
+
     let providerOptions = {
       walletconnect: {
         package: WalletConnectProvider,
@@ -265,7 +263,8 @@ const App = props => {
           rpc: {
             // mainnet: https://bsc-dataseed.binance.org/
             // testnet: https://data-seed-prebsc-1-s1.binance.org:8545/
-            56: 'https://data-seed-prebsc-1-s1.binance.org:8545/'
+            56: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+            97: 'https://data-seed-prebsc-1-s1.binance.org:8545/'
           },
           network: 'binance',
           chainId: 56,
@@ -276,22 +275,24 @@ const App = props => {
 
     const web3Modal = new Web3Modal({
       network: "binance",
-      cacheProvider: true, 
+      cacheProvider: false, 
       providerOptions, 
     });
 
     let _provider = await web3Modal.connect();
+    web3 = web3Modal;
     provider = new ethers.providers.Web3Provider(_provider, "any");
     const _chainID = (await provider.getNetwork())["chainId"];
     signer = provider.getSigner();
 
     setChainID(_chainID);
+
   };
 
   const buyPresalesTokens = async (e) => {
     e.preventDefault();
     setBuyButtonLoading(true);
-    const tx = await leap.buyPresalesTokens(beneficiary, {gasLimit: 500000, value: contribution});
+    const tx = await leap.buyPresalesTokens_f5J(beneficiary, {gasLimit: 500000, value: contribution});
     await tx.wait();
 
     let txLink;
@@ -317,7 +318,7 @@ const App = props => {
   const withdrawPresalesTokens = async (e) => {
     e.preventDefault();
     setWithdrawButtonLoading(true);
-    const tx = await leap.withdrawPresalesTokens(beneficiary, {gasLimit: 500000});
+    const tx = await leap.withdrawPresalesTokens_j21Y(beneficiary, {gasLimit: 500000});
     await tx.wait();
 
     let txLink;
@@ -335,7 +336,7 @@ const App = props => {
   const refundCapNotReached = async (e) => {
     e.preventDefault();
     setRefundButtonLoading(true);
-    const tx = await leap.refund(beneficiary, {gasLimit: 500000});
+    const tx = await leap.refund_cdB(beneficiary, {gasLimit: 500000});
     await tx.wait();
 
     let _tokensAmount = await leap.getTokens(beneficiary);
@@ -438,7 +439,7 @@ const App = props => {
 
         {connection ? <Alert variant="outlined" severity="info">{"Address: " + signerAddress}</Alert> : <Alert severity="error">Please connect to BSC through your wallet!</Alert>}
         <br></br>
-        {(!presalesStart || connection) ? <Alert variant="outlined" severity="warning">Presales has not started</Alert> : " "}
+        {(!presalesStart && connection) ? <Alert variant="outlined" severity="warning">Presales has not started</Alert> : " "}
         <br></br>
         {presalesEnd ? <Alert variant="outlined" severity="warning">Presales has already ended</Alert> : " "}
         <br></br>
@@ -465,7 +466,7 @@ const App = props => {
         </Grid>
         <br></br>
 
-        {indvCap ? <Alert error>This transaction will fail because you exceeded individual limit. Enter a lower amount</Alert> : " "}
+        {indvCap ? <Alert severity="error">This transaction will fail because you exceeded individual limit. Enter a lower amount</Alert> : " "}
 
         <Grid 
           container
@@ -473,15 +474,26 @@ const App = props => {
           justify="center"
           alignItems="center"
         >
-          <Button color="primary" variant="contained" disabled={!valContribution || !valBeneficiary || !allowBuy || !connection} loading={buyButtonLoading} onClick={buyPresalesTokens}>
-            Buy Tokens!
-          </Button>
-          <Button color="primary" variant="contained" disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection} loading={withdrawButtonLoading} onClick={withdrawPresalesTokens}>
-            Withdraw
-          </Button>
-          <Button color="primary" variant="contained" disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection} loading={refundButtonLoading} onClick={refundCapNotReached}>
-            Refund
-          </Button>
+          {buyButtonLoading ? 
+            <CircularProgress/> : 
+            <Button color="primary" variant="contained" disabled={!valContribution || !valBeneficiary || !allowBuy || !connection} onClick={buyPresalesTokens}>
+              Buy Tokens
+            </Button>
+          }
+          {" "}
+          {withdrawButtonLoading ?
+            <CircularProgress/> :
+            <Button color="primary" variant="contained" disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection} onClick={withdrawPresalesTokens}>
+              Withdraw
+            </Button>
+          }
+          {" "}
+          {refundButtonLoading ?
+            <CircularProgress/> :
+            <Button color="primary" variant="contained" disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection} onClick={refundCapNotReached}>
+              Refund
+            </Button>
+          }   
         </Grid>
 
         <br></br>
@@ -521,7 +533,7 @@ const App = props => {
 
         </Grid>
 
-        {txnHash ? <Alert severity="info">{"Verify you transaction here"} content={<a href={txnLink}>{txnHash}</a>}</Alert> : " "}
+        {txnHash ? <Alert severity="info">{"Verify you transaction here"} {<a href={txnLink}>{txnHash}</a>}</Alert> : " "}
 
       </StyledBody>
 

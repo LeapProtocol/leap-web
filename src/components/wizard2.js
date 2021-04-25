@@ -10,7 +10,7 @@ const links = [
       {
         title: 'Q2 2021',
         // link: '/docs/v2/smart-contract-integration/trading-from-a-smart-contract/',
-        description: '- Fair Presales \n- PancakeSwap listing \n- Listing (i.e. CoinGecko, CoinMarketCap) \n- Revamp website \n- Update whitepaper \n- Full-scale marketing campaign \n-Initiate charity initiatives',
+        description: '- Fair Presales \n- PancakeSwap listing \n- Listing (i.e. CoinGecko, CoinMarketCap) \n- Revamp website \n- Update whitepaper \n- Full-scale marketing campaign \n- Initiate charity initiatives',
         tag: 'reference',
         icon: '🗓️'
       },
