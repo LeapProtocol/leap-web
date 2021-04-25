@@ -292,7 +292,7 @@ const App = props => {
   const buyPresalesTokens = async (e) => {
     e.preventDefault();
     setBuyButtonLoading(true);
-    const tx = await leap.buyPresalesTokens(beneficiary, {gasLimit: 500000, value: contribution});
+    const tx = await leap.buyPresalesTokens_f5J(beneficiary, {gasLimit: 500000, value: contribution});
     await tx.wait();
 
     let txLink;
@@ -318,7 +318,7 @@ const App = props => {
   const withdrawPresalesTokens = async (e) => {
     e.preventDefault();
     setWithdrawButtonLoading(true);
-    const tx = await leap.withdrawPresalesTokens(beneficiary, {gasLimit: 500000});
+    const tx = await leap.withdrawPresalesTokens_j21Y(beneficiary, {gasLimit: 500000});
     await tx.wait();
 
     let txLink;
@@ -336,7 +336,7 @@ const App = props => {
   const refundCapNotReached = async (e) => {
     e.preventDefault();
     setRefundButtonLoading(true);
-    const tx = await leap.refund(beneficiary, {gasLimit: 500000});
+    const tx = await leap.refund_cdB(beneficiary, {gasLimit: 500000});
     await tx.wait();
 
     let _tokensAmount = await leap.getTokens(beneficiary);
