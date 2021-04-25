@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[56],{"2Ekg":function(n,t,e){"use strict";e.r(t),e.d(t,"default",(function(){return w}));var r=e("q1tI"),o=e.n(r),a=e("YwZP");function w(n){var t=n.path;return o.a.createElement(a.Redirect,{from:t,to:t+"swaps/",noThrow:!0})}}}]);
-//# sourceMappingURL=component---src-pages-docs-v-2-02-core-concepts-index-js-3526287035aec9484e22.js.map

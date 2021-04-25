@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[51],{"ah+n":function(n,t,e){"use strict";e.r(t),e.d(t,"default",(function(){return a}));var o=e("q1tI"),r=e.n(o),c=e("YwZP");function a(n){var t=n.path;return r.a.createElement(c.Redirect,{from:t,to:"/docs/v2/core-concepts",noThrow:!0})}}}]);
-//# sourceMappingURL=component---src-pages-docs-v-2-01-protocol-overview-reference-core-concepts-js-db56fa313f49f4b5f979.js.map
