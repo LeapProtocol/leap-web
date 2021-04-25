@@ -19,7 +19,7 @@ const links = [
       {
         title: 'Automatic Burn',
         // link: '/docs/v2/smart-contract-integration/providing-liquidity/',
-        description: '10% of total supply is allocated to the burn address 0x0000000000000000000000000000000000000000. Token redistributed to this is automatically burned.',
+        description: '10% of total supply is allocated to the burn address 0x0000000000000000000000000000000000000000. Token redistributed to this is automatically burnt.',
         tag: 'tutorial',
         icon: 'burner.png',
         isIconImage:true
