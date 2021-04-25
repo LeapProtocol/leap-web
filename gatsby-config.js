@@ -8,10 +8,10 @@ module.exports = {
   pathPrefix: "/leap-web",
   siteMetadata: {
     title: `Leap Protocol`,
-    description: `Automated liquidity protocol on Ethereum`,
+    description: `Community-driven fair token initiative`,
     author: `@LeapDev`,
     menulinks: menu,
-    siteUrl: `https://leapprotocol`,
+    siteUrl: `https://leapprotocol.org`,
     repository: ``,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
@@ -28,7 +28,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://leapprotocol`
+        siteUrl: `https://leapprotocol.org`
       }
     },
     {
@@ -89,8 +89,7 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/layouts'),
           faq: require.resolve(`./src/layouts/faq`),
-          paper: require.resolve(`./src/layouts/paper`),
-          presales: require.resolve(`./src/layouts/presales`)
+          paper: require.resolve(`./src/layouts/paper`)
         },
         remarkPlugins: [require(`remark-math`)],
         rehypePlugins: [require(`rehype-katex`)],

@@ -50,7 +50,6 @@ const StyledNav = styled.nav`
     -webkit-overflow-scrolling: touch;
     background-color: ${({ theme }) => theme.colors.grey1};
     width: 100%;
-    height: 100%;
     z-index: 999;
     padding: 2rem;
     overflow: auto;
