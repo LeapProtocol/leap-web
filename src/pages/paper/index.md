@@ -74,7 +74,7 @@ Leap protocol employs a fair distribution. On contract deployment, the token sup
 - 20 % presales
 - 60% liquidity pool
 
-![token distribution](./token-distribution.png "Token Distribution")
+![token distribution](./leap_distribution.png "Token Distribution")
 
 ## Staking by Holding
 Per transaction, 10% of Leap will be redistributed to all Leap holders, excluding PancakeSwap Liquidity Pool.
