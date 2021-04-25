@@ -344,6 +344,13 @@ const IndexPage = props => {
           }
         }
       }
+      telegram: file(relativePath: { eq: "telegram.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
       reddit: file(relativePath: { eq: "reddit.png" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
@@ -391,7 +398,7 @@ const IndexPage = props => {
               <StyledHeroImage style={{position:"initial"}} fadeIn={false} fluid={data.thin.childImageSharp.fluid} />
             </MiniNewInfo>
           </StyledImgSection> */}
-          <StyledBodyTitle>Community-driven Fair Token Initiative</StyledBodyTitle>
+          <StyledBodyTitle>Community-Driven Fair Token Initiative</StyledBodyTitle>
           <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
           <p>Guaranteed transparency and fairness for all users.</p>
           <p>LEAP is about the community; LEAP is about YOU.</p> 
@@ -586,8 +593,11 @@ const ProductsSection = props => {
         <StyledExternalLink href={'https://discord.gg/KFgS9QsTCg'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.discord.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={'https://t.me/LeapNow'} target="_blank">
+        <StyledExternalLink href={''} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.twitter.childImageSharp.fluid} />
+        </StyledExternalLink>
+        <StyledExternalLink href={'https://t.me/LeapNow'} target="_blank">
+          <StyledProductImage fadeIn={false} fluid={props.data.telegram.childImageSharp.fluid} />
         </StyledExternalLink>
         <StyledExternalLink href={'https://www.reddit.com/r/LeapProtocol/ '} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
