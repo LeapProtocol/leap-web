@@ -8,10 +8,10 @@ module.exports = {
   pathPrefix: "/leap-web",
   siteMetadata: {
     title: `Leap Protocol`,
-    description: `Automated liquidity protocol on Ethereum`,
-    author: `@Uniswap`,
+    description: `Community-driven fair token initiative`,
+    author: `@LeapDev`,
     menulinks: menu,
-    siteUrl: `https://uniswap.org`,
+    siteUrl: `https://leapprotocol.org`,
     repository: ``,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
@@ -19,16 +19,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: process.env.AWS_S3_BUCKET || 'NOT_SPECIFIED',
+        bucketName: 'leapprotocol.org',
         protocol: 'https',
-        hostname: 'uniswap.org',
+        hostname: 'leapprotocol.org',
         acl: null
       }
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://uniswap.org`
+        siteUrl: `https://leapprotocol.org`
       }
     },
     {
@@ -89,8 +89,7 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/layouts'),
           faq: require.resolve(`./src/layouts/faq`),
-          paper: require.resolve(`./src/layouts/paper`),
-          presales: require.resolve(`./src/layouts/presales`)
+          paper: require.resolve(`./src/layouts/paper`)
         },
         remarkPlugins: [require(`remark-math`)],
         rehypePlugins: [require(`rehype-katex`)],
@@ -102,9 +101,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
-              title: 'Uniswap', // website title
+              title: 'LeapProtocol', // website title
               separator: '|', // default
-              author: '@Uniswap',
+              author: '@LeapDev',
               background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
               fontColor: '#FF3093', // defaults to white (#ffffff)
               fontStyle: 'sans-serif', // default
@@ -191,16 +190,16 @@ module.exports = {
     //     ]
     //   }
     // },
-    'gatsby-plugin-eslint',
-    {
-      resolve: `gatsby-plugin-algolia-docsearch-appid`,
-      options: {
-        apiKey: '8962240e69e6d23a88432f501c115470',
-        indexName: 'uniswap_v2_docs',
-        appId: 'VZ0CVS8XCW',
-        inputSelector: 'blank' // use dummy selector to avoid double render
-      }
-    }
+    // 'gatsby-plugin-eslint',
+    // {
+    //   resolve: `gatsby-plugin-algolia-docsearch-appid`,
+    //   options: {
+    //     apiKey: '8962240e69e6d23a88432f501c115470',
+    //     indexName: 'uniswap_v2_docs',
+    //     appId: 'VZ0CVS8XCW',
+    //     inputSelector: 'blank' // use dummy selector to avoid double render
+    //   }
+    // }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

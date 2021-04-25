@@ -138,6 +138,8 @@ const Docs = props => {
             />
           )
         })} */}
+      <BG />
+      <SEO title={props.pageContext.frontmatter.title} path={props.location.pathname} />
       <StyledDocs id="docs-header">
         <span>
           <StyledPageTitle>

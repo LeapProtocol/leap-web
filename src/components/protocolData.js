@@ -143,7 +143,7 @@ const ProtocolData = () => {
           <span>
             200<span style={{ opacity: '0.1' }}>+</span>
           </span>
-          <p style={{ fontSize: '14px' }}>Burned</p>
+          <p style={{ fontSize: '14px' }}>Burnt</p>
         </BigNumbers>
       </div>
     </Numbers>
