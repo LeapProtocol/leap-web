@@ -5,7 +5,7 @@
 <url> <loc>https://uniswap.org/leap-web/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://uniswap.org/leap-web/success/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://uniswap.org/leap-web/presales/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://uniswap.org/leap-web/faq/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://uniswap.org/leap-web/bug-bounty/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://uniswap.org/leap-web/paper/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://uniswap.org/leap-web/faq/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>

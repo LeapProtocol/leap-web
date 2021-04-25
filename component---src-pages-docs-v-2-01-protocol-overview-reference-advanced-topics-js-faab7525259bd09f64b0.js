@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[50],{jK0W:function(n,t,e){"use strict";e.r(t),e.d(t,"default",(function(){return a}));var o=e("q1tI"),r=e.n(o),c=e("YwZP");function a(n){var t=n.path;return r.a.createElement(c.Redirect,{from:t,to:"/docs/v2/advanced-topics/",noThrow:!0})}}}]);
-//# sourceMappingURL=component---src-pages-docs-v-2-01-protocol-overview-reference-advanced-topics-js-faab7525259bd09f64b0.js.map
