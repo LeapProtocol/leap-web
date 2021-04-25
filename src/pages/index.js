@@ -404,8 +404,8 @@ const IndexPage = props => {
                 color: 'white',
                 fontSize: '20px'
               }}
-              target="_blank"
-              href="https://app.uniswap.org/"
+              to="/presales"
+              as={Link}
             >
               Take the LEAP
             </Button>
