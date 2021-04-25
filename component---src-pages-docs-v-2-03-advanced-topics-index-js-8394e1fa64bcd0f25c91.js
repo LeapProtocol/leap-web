@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[65],{Fzuc:function(n,e,t){"use strict";t.r(e),t.d(e,"default",(function(){return u}));var r=t("q1tI"),o=t.n(r),c=t("YwZP");function u(n){var e=n.path;return o.a.createElement(c.Redirect,{from:e,to:e+"fees/",noThrow:!0})}}}]);
+//# sourceMappingURL=component---src-pages-docs-v-2-03-advanced-topics-index-js-8394e1fa64bcd0f25c91.js.map
