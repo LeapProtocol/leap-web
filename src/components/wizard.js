@@ -28,7 +28,7 @@ const links = [
       {
         title: 'Charity',
         // link: '/docs/v2/core-concepts/flash-swaps/',
-        description: 'Approx. 0.4% of every transaction gets redistributed to the charity address 0x0000000000000000000000000000000000000002. The LEAP community will decide how tokens redistributed to this address will be used',
+        description: 'Approx. 0.4% of every transaction gets redistributed to the charity address 0x0000000000000000000000000000000000000002. The LEAP community will decide how tokens redistributed to this address will be used.',
         tag: 'guide',
         icon: 'charity.png',
         isIconImage:true
@@ -51,7 +51,7 @@ const links = [
       {
         title: 'Liquidity Pool',
         // link: '/docs/v2/core-concepts/oracles/',
-        description: '60% of total supply is allocated to Liquidity pool along with all funds raised during Presales',
+        description: '60% of total supply is allocated to Liquidity Pool along with all funds raised during Presales',
         description2: "Liquidity Pool is locked in LEAP's smart contract which can be verified by the public.",
         icon: 'liquiditypool.png',
         isIconImage:true

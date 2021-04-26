@@ -533,7 +533,7 @@ const ProductsSection = props => {
 
       <StyledSectionTitle>Join Us</StyledSectionTitle>
       <StyledBodySubText>
-        LEAP Protocol is a community driven token initiative that advocates fairness to all by ensuring a global fair launch, automatic farming & burning during each trade. Join us and take the LEAP now.      
+        LEAP Protocol is a community-driven token initiative that advocates fairness to all by ensuring a global fair launch, automatic farming & burning during each trade. Join us and take the LEAP now.      
       </StyledBodySubText>
       {/* <StyledItemRow>
         <StyledExternalLink href={'https://discord.gg/KFgS9QsTCg'} target="_blank">
