@@ -389,11 +389,11 @@ const IndexPage = props => {
 
   return (
     <Layout path={props.location.pathname}>
-      <BGCard>
+      {/* <BGCard>
         <CardNoise />
         <CardBGImage isDark={isDark} />
         <CardFade />
-      </BGCard>
+      </BGCard> */}
       <SEO
         title="Home"
         path={props.location.pathname}
@@ -419,7 +419,7 @@ const IndexPage = props => {
           <StyledItemRow>
             <Button
               style={{
-                background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
+                background: `linear-gradient(128.17deg, #00ce81 -14.78%, #00b4ce 110.05%)`,
                 color: 'white',
                 fontSize: '20px'
               }}
@@ -462,6 +462,8 @@ const IndexPage = props => {
         </StyledTitle>
         <ProtocolData />
         <ProductsSection data={data} props={props} />
+        <br/>
+        <br/>
         <DeveloperSection data={data} props={props} />
       </StyledBody>
       <BG />
@@ -498,8 +500,8 @@ const StyledSectionTitle = styled.h1`
 const DeveloperSection = props => {
   return (
     <>
-      <StyledSectionTitle>Disclaimer</StyledSectionTitle>
-      <StyledBodySubText style={{fontSize:"15px"}}>
+      <StyledSectionTitle style={{fontSize:"18px"}}>Disclaimer</StyledSectionTitle>
+      <StyledBodySubText style={{fontSize:"11px"}}>
        All Content shared on this website is for information purpose only and, 
        thus, should not be considered as financial advice. 
        Trading/Investing is risky and you should never invest more than you can afford to lose.
