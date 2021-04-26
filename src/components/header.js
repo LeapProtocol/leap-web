@@ -41,13 +41,13 @@ const StyledNav = styled.nav`
   align-items: center;
   justify-content: flex-start;
   transition: right 0.25s ease;
-  flex-direction: column;
   @media (max-width: 960px) {
     position: fixed;
     top: 0px;
     right: ${({ open }) => (open ? '0px' : '-100%')};
     align-items: flex-start;
     flex-wrap: wrap;
+    flex-direction: column;
     -webkit-overflow-scrolling: touch;
     background-color: ${({ theme }) => theme.colors.grey1};
     width: 100%;
