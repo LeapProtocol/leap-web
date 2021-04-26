@@ -429,10 +429,6 @@ const App = props => {
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Presales</StyledBodyTitle>
-            <StyledBodySubTitle style={{ marginBottom: '3rem' }}>
-              <p>Guaranteed transparency & fairness for millions of users.</p>
-              <p>LEAP is not what the community wants. LEAP is about the community; LEAP is about YOU.</p> 
-          </StyledBodySubTitle>
           <Countdown date='2021-04-30T03:24:00'/>
         </StyledTitle>
 
