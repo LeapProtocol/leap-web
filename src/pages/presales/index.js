@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextField, Grid, Card, CardContent, CircularProgress } from '@material-ui/core';
+import { TextField, Grid, Card, CardContent, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Alert } from '@material-ui/lab';
 
+import { Button } from '../../components/button'
 import Leap from '../../contracts/Leap.json';
 import { ethers, Contract , utils} from 'ethers';
 import Web3Modal from "web3modal";
@@ -434,16 +435,21 @@ const App = props => {
           <Countdown date='2021-04-30T03:24:00'/>
         </StyledTitle>
 
-        <Button variant="outlined" color={connection ? "primary" : "secondary"} onClick={getProvider}>{connection ? "Connected" :"Connect to Web3"}</Button>
-        <br></br>
+        <Button
+          style={{
+            background: `#f5feff`,
+            fontSize: '20px',
+            color: '#00b4ce'
+          }}
+          onClick={getProvider}
+        >
+          {connection ? signerAddress :"Connect to Web3"}
+        </Button>
 
-        {connection ? <Alert variant="outlined" severity="info">{"Address: " + signerAddress}</Alert> : <Alert severity="error">Please connect to BSC through your wallet!</Alert>}
-        <br></br>
         {(!presalesStart && connection) ? <Alert variant="outlined" severity="warning">Presales has not started</Alert> : " "}
-        <br></br>
         {presalesEnd ? <Alert variant="outlined" severity="warning">Presales has already ended</Alert> : " "}
         <br></br>
-        <Alert variant="outlined" severity="info">{"Current toal contribution: " + totalContribution + " BNB"}</Alert>
+        <Alert variant="outlined" severity="info" fullWidth={true}>{"Current total contribution: " + totalContribution + "/50 BNB"}</Alert>
 
         <br></br>
         <Grid>
