@@ -9,7 +9,7 @@ import Leap from '../../contracts/Leap.json';
 import { ethers, Contract , utils} from 'ethers';
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-
+import { useDarkMode } from '../../contexts/Application'
 import styled from 'styled-components'
 import Layout from '../../layouts'
 import SEO from '../../components/seo'
@@ -163,6 +163,7 @@ const StyledItemRow = styled.nav`
 `
 
 const App = props => {
+  const isDark = useDarkMode();
   const [connection, setConnection] = useState(false);
   const [signerAddress, setSignerAddress] = useState(undefined);
 
@@ -482,21 +483,42 @@ const App = props => {
         >
           {buyButtonLoading ? 
             <CircularProgress/> : 
-            <Button color="primary" variant="contained" disabled={!valContribution || !valBeneficiary || !allowBuy || !connection} onClick={buyPresalesTokens}>
+            <Button
+              outlined
+              disabled={!valContribution || !valBeneficiary || !allowBuy || !connection}
+              onClick={buyPresalesTokens}
+              style={{
+                fontSize: '20px'
+              }}
+            >
               Buy Tokens
             </Button>
           }
           {" "}
           {withdrawButtonLoading ?
             <CircularProgress/> :
-            <Button color="primary" variant="contained" disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection} onClick={withdrawPresalesTokens}>
+            <Button
+              outlined
+              disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection}
+              onClick={withdrawPresalesTokens}
+              style={{
+                fontSize: '20px'
+              }}
+            >
               Withdraw
             </Button>
           }
           {" "}
           {refundButtonLoading ?
             <CircularProgress/> :
-            <Button color="primary" variant="contained" disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection} onClick={refundCapNotReached}>
+            <Button
+              outlined
+              disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection}
+              onClick={refundCapNotReached}
+              style={{
+                fontSize: '20px'
+              }}
+            >
               Refund
             </Button>
           }   
