@@ -421,7 +421,7 @@ const App = props => {
   return (
     <Layout path={props.location.pathname}>
       <SEO
-        title="Home"
+        title="Presales"
         path={props.location.pathname}
         description={'A fully decentralized protocol for automated liquidity provision on Ethereum'}
       />
