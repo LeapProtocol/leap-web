@@ -455,9 +455,11 @@ const App = props => {
           style={{
             background: `#f5feff`,
             fontSize: '20px',
-            color: '#00b4ce'
+            color: '#00b4ce',
+            borderRadius: '10px'
           }}
           onClick={getProvider}
+          variant="outlined"
         >
           {connection ? signerAddress :"Connect to Web3"}
         </Button>
@@ -494,7 +496,7 @@ const App = props => {
             {buyButtonLoading ? 
               <CircularProgress/> : 
               <Button
-                outlined
+                variant="outlined"
                 disabled={!valContribution || !valBeneficiary || !allowBuy || !connection}
                 onClick={buyPresalesTokens}
                 style={{
@@ -508,7 +510,7 @@ const App = props => {
             {withdrawButtonLoading ?
               <CircularProgress/> :
               <Button
-                outlined
+                variant="outlined"
                 disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection}
                 onClick={withdrawPresalesTokens}
                 style={{
@@ -522,7 +524,7 @@ const App = props => {
             {refundButtonLoading ?
               <CircularProgress/> :
               <Button
-                outlined
+                variant="outlined"
                 disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection}
                 onClick={refundCapNotReached}
                 style={{
