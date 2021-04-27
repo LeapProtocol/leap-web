@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextField, Grid, Card, CardContent, CircularProgress } from '@material-ui/core';
+import { Button, TextField, Grid, Card, CardContent, CircularProgress, Dialog, List, ListItem, ListItemText, Snackbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Alert } from '@material-ui/lab';
@@ -161,6 +161,37 @@ const StyledItemRow = styled.nav`
   }
 `
 
+function SimpleDialog(props) {
+  const { setShowDialog, showDialog, signerAddress, getProvider, setCopied } = props;
+  const bscscanLink = "https://bscscan.com/address/" + signerAddress;
+
+  const handleGetProvider = () => {
+    setShowDialog(false);
+    getProvider();
+  }
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(signerAddress);
+    setCopied(true);
+  }
+
+  return (
+    <Dialog onClose={() => setShowDialog(false)} aria-labelledby="simple-dialog-title" open={showDialog}>
+      <List>
+      <ListItem button>
+          <ListItemText primary="Copy address" onClick={copyToClipboard}/>
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="View on bscscan" onClick={() => window.open(bscscanLink)}/>
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Change provider" onClick={handleGetProvider}/>
+        </ListItem>
+      </List>
+    </Dialog>
+  );
+}
+
 const App = props => {
   const [connection, setConnection] = useState(false);
   const [signerAddress, setSignerAddress] = useState(undefined);
@@ -193,6 +224,9 @@ const App = props => {
   // current wallet's stats
   const [contributed, setContributed] = useState(0);
   const [tokensAmount, setTokenAmounts] = useState(0);
+
+  const [showDialog, setShowDialog] = useState(0);
+  const [copied, setCopied] = useState(false);
 
   const cardClasses = useCardStyles();
 
@@ -424,6 +458,14 @@ const App = props => {
       setIndvCap(false);
     }
   }
+
+  const handleSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setCopied(false);
+    setShowDialog(false);
+  };
   
   return (
     <Layout path={props.location.pathname}>
@@ -451,18 +493,46 @@ const App = props => {
           </StyledBodySubTitle>
         </StyledTitle>
 
-        <Button
-          style={{
-            fontSize: '20px',
-            color: '#00b4ce',
-            borderRadius: '10px'
-          }}
-          variant="outlined"
-          onClick={getProvider}
-          variant="outlined"
-        >
-          {connection ? signerAddress :"Connect to Web3"}
-        </Button>
+
+        {!connection ?
+          [<Button
+            style={{
+              fontSize: '20px',
+              color: '#00b4ce',
+              borderRadius: '10px'
+            }}
+            onClick={getProvider}
+            variant="outlined"
+          >
+            Connect to Web3
+          </Button> ]:
+          [<Button
+            style={{
+              fontSize: '20px',
+              color: '#00b4ce',
+              borderRadius: '10px'
+            }}
+            onClick={() => setShowDialog(true)}
+            variant="outlined"
+          >
+            {"Connected to " + signerAddress.substring(0, 8) + "..."}
+          </Button>]      
+        }
+
+        <SimpleDialog 
+          setCopied={setCopied} 
+          setShowDialog={setShowDialog} 
+          showDialog={showDialog} 
+          signerAddress={signerAddress} 
+          getProvider={getProvider} 
+        />
+
+      <Snackbar open={copied} autoHideDuration={3000} onClose={handleSnackbar}>
+        <Alert onClose={handleSnackbar} severity="success">
+          {"Copied " + signerAddress + " to clipboard!"}
+        </Alert>
+      </Snackbar>
+
         <br></br>
         <ThemeProvider theme={theme}>
           <Grid>
