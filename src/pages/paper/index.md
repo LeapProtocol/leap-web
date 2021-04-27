@@ -16,7 +16,7 @@ _NOTE: This document is under development. Please check regularly for updates!_
   * [Liquidity Pool](#liquidity-pool)
   * [Charity](#charity)
 # Motivation
-Leap is designed with fairness as the core principle. A token which is designed to be fair, and to help those in needs.
+Leap Protocol is designed with fairness as the core principle. A token which is designed to be fair, and to help those in needs.
 
 # Design Principles
 ## Binance Smart Chain
@@ -44,7 +44,7 @@ With Leap Protocol, everyone has an equal opportunity. A fair public presales wi
 1. In the event that presales fail to raise 50 BNB, all the BNB will be refunded to the participants.
 
 ## Security
-Security and safety of users' funds and investments are top priorities in Leap protocol. The security and safety features are built right in the LEAP smart contract. This allows everyone to easily audit and inspect the trustworthiness of LEAP. 
+Security and safety of users' funds and investments are top priorities in Leap Protocol. The security and safety features are built right in the LEAP smart contract. This allows everyone to easily audit and inspect the trustworthiness of LEAP. 
 
 ### Presales Mechanism
 During presales, the contributions and withdrawable presales tokens amount are carefully tracked by the smart contract. In the event when a user contributed an amount that causes the total contributions to exceed the capped 50 BNB, the balance will be returned to the user.
@@ -76,8 +76,8 @@ Leap protocol employs a fair distribution. On contract deployment, the token sup
 
 ![token distribution](./leap_distribution.png "Token Distribution")
 
-## Staking by Holding
-Per transaction, 10% of Leap will be redistributed to all Leap holders, excluding PancakeSwap Liquidity Pool.
+## Automatic Farming
+Per transaction, 10% of LEAP will be redistributed to all LEAP holders, excluding PancakeSwap Liquidity Pool.
 
 ## Automatic Burn
 The burn wallet which holds 10% of the total supply is part of the token redistribution. As the amount of Leap increases in this burn wallet per transaction, burn rate will increase exponentially over time.
@@ -86,6 +86,6 @@ The burn wallet which holds 10% of the total supply is part of the token redistr
 60% of total supply is added to the liquidity pool. This prevents the need from having to increase the liquidity pool, which maximizes the token redistribution that token holder will receives.
 
 ## Charity
-Leap Protocol's core principle is about fairness. Leap community will vote for how the charity pool is used and who it will be used for.
+Leap Protocol's core principle is about fairness. LEAP community will vote for how the charity pool is used and who it will be used for.
 
 ------

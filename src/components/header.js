@@ -39,7 +39,7 @@ const StyledNav = styled.nav`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   transition: right 0.25s ease;
   @media (max-width: 960px) {
     position: fixed;
@@ -47,9 +47,11 @@ const StyledNav = styled.nav`
     right: ${({ open }) => (open ? '0px' : '-100%')};
     align-items: flex-start;
     flex-wrap: wrap;
+    flex-direction: column;
     -webkit-overflow-scrolling: touch;
     background-color: ${({ theme }) => theme.colors.grey1};
     width: 100%;
+    height: 100%;
     z-index: 999;
     padding: 2rem;
     overflow: auto;
@@ -234,7 +236,7 @@ var data = [
   {"name":"Presales" , "link":"/presales"},
   {"name":"White Paper" , "link":"/paper"},
   // {"name":"How to Buy" , "link":""}, 
-  {"name":"LEAP Contract" , "link":""},
+  {"name":"Smart Contract" , "link":""},
   {"name":"FAQ","link":"/faq"},
 ]
 
@@ -268,7 +270,7 @@ var data = [
         {props.path !== undefined && (
           <StyledTradeLink
             style={{
-              background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
+              background: `linear-gradient(128.17deg, #00ce81 -14.78%, #00b4ce 110.05%)`,
               color: 'white'
             }}
             to="/presales"

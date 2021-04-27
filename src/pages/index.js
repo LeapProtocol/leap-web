@@ -11,6 +11,7 @@ import Wizard2 from '../components/wizard2'
 import ProtocolData from '../components/protocolData'
 import { useDarkMode } from '../contexts/Application'
 import { CardBGImage, CardFade, CardNoise, StyledExternalLink } from '../components/utils'
+import { SocialIcon } from 'react-social-icons';
 
 const BGCard = styled.span`
   width: 100vw;
@@ -182,6 +183,17 @@ const StyledItemRow = styled.nav`
     box-sizing: border-box;
     transition: right 0.25s ease;
   }
+`
+
+const StyledSocialRow = styled.div`
+  display: flex;
+  justify-content:center;
+  height: 20px;
+  width: 100%;
+`
+
+const StyledSocialIcon = styled(SocialIcon)`
+  margin: 0 2%;
 `
 
 const StyledHeroImage = styled(Img)`
@@ -377,11 +389,11 @@ const IndexPage = props => {
 
   return (
     <Layout path={props.location.pathname}>
-      <BGCard>
+      {/* <BGCard>
         <CardNoise />
         <CardBGImage isDark={isDark} />
         <CardFade />
-      </BGCard>
+      </BGCard> */}
       <SEO
         title="Home"
         path={props.location.pathname}
@@ -407,7 +419,7 @@ const IndexPage = props => {
           <StyledItemRow>
             <Button
               style={{
-                background: `linear-gradient(128.17deg, #BD00FF -14.78%, #FF1F8A 110.05%)`,
+                background: `linear-gradient(128.17deg, #00ce81 -14.78%, #00b4ce 110.05%)`,
                 color: 'white',
                 fontSize: '20px'
               }}
@@ -436,7 +448,7 @@ const IndexPage = props => {
             >
               FAQ
             </Button>
-            <Button
+            {/* <Button
               outlined
               to="/presales"
               as={Link}
@@ -445,11 +457,13 @@ const IndexPage = props => {
               }}
             >
               Presales
-            </Button>
+            </Button> */}
           </StyledItemRow>
         </StyledTitle>
         <ProtocolData />
         <ProductsSection data={data} props={props} />
+        <br/>
+        <br/>
         <DeveloperSection data={data} props={props} />
       </StyledBody>
       <BG />
@@ -486,8 +500,8 @@ const StyledSectionTitle = styled.h1`
 const DeveloperSection = props => {
   return (
     <>
-      <StyledSectionTitle>Disclaimer</StyledSectionTitle>
-      <StyledBodySubText style={{fontSize:"15px"}}>
+      <StyledSectionTitle style={{fontSize:"18px"}}>Disclaimer</StyledSectionTitle>
+      <StyledBodySubText style={{fontSize:"11px"}}>
        All Content shared on this website is for information purpose only and, 
        thus, should not be considered as financial advice. 
        Trading/Investing is risky and you should never invest more than you can afford to lose.
@@ -505,35 +519,8 @@ const DeveloperSection = props => {
 const ProductsSection = props => {
   return (
     <>
-      {/* <StyledSectionTitle>A suite of tools for a tokenized world.</StyledSectionTitle>
-      <StyledBodySubText>
-        We build state of the art open source apps to access the Uniswap protocol and contribute to the world of
-        decentralized finance.
-      </StyledBodySubText>
-      <StyledItemRow>
-        <StyledExternalLink href={'https://socks.uniswap.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.socks.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://info.uniswap.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.info.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://app.uniswap.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.swap.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://tokenlists.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.tokenlists.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://sybil.org'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.sybil.childImageSharp.fluid} />
-        </StyledExternalLink>
-      </StyledItemRow> */}
 
       <StyledSectionTitle>We advocate FAIR PLAY</StyledSectionTitle>
-      {/* <StyledBodySubText>
-        Check out the <Link to="/docs/v2/">documentation</Link>, the{' '}
-        <Link to="/docs/v2/javascript-SDK/quick-start/">quick start</Link> or a guide below to integrate your project
-        with thousands of tokens and billions in liquidity.
-      </StyledBodySubText> */}
       <StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
         <Wizard />
       </StyledSectionFlex>
@@ -546,54 +533,16 @@ const ProductsSection = props => {
         <Wizard2 />
       </StyledSectionFlex>
 
-      {/* <StyledItemRow>
-        <StyledExternalLink href={'https://discord.gg/FCfyBSbCU5'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.discord.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://twitter.com/Uniswap'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.twitter.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://gov.uniswap.org/'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.discourse.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink href={'https://www.reddit.com/r/Uniswap'} target="_blank">
-          <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
-        </StyledExternalLink>
-        <StyledExternalLink>
-          Q2 2021
-          <p>-Fair Presales</p>
-          <p>-PancakeSwap listing</p>
-          <p>-Listing (i.e. CoinGecko, CoinMarketCap)</p>
-          <p>-Revamp website</p>
-          <p>-Update whitepaper</p>
-          <p>-Full-scale marketing campaign</p>
-          <p>-Initiate charity initiatives</p>
-        </StyledExternalLink>
-        <StyledExternalLink>
-          Q3 2021
-          <p>-Listing to exchange (i.e. Coinbase, Binance)</p>
-          <p>-Setup of a base for LEAPers in Singapore </p>
-          <p>-Expand core team to include a dedicated legal, finance & charity arm</p>
-          <p>-Expand charity initiatives through community</p>
-          <p>-R&D & Implementation of NFT</p>
-        </StyledExternalLink>
-        <StyledExternalLink>
-          Q4 2021
-         <p>-Become a globally recognise charity institution</p>
-         <p>-Incorporate charity into the core of LEAP</p>
-         <p>-Full-on incorporation of various dApps including NFT & DeFi</p>
-        </StyledExternalLink>
-      </StyledItemRow> */}
-
       <StyledSectionTitle>Join Us</StyledSectionTitle>
       <StyledBodySubText>
-        LEAP Protocol is a community driven token initiative that advocates fairness to all by ensuring a global fair launch, and automatic farming & burning during each trade. Join us and take the LEAP now.      
+        LEAP Protocol is a community-driven token initiative that advocates fairness to all by ensuring a global fair launch with automatic farming and automatic burning during each trade. Join us and take the LEAP now.      
       </StyledBodySubText>
-      <StyledItemRow>
+      {/* <StyledItemRow>
         <StyledExternalLink href={'https://discord.gg/KFgS9QsTCg'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.discord.childImageSharp.fluid} />
         </StyledExternalLink>
-        <StyledExternalLink href={''} target="_blank">
+        
+        <StyledExternalLink href={'https://twitter.com/LeapProtocol'} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.twitter.childImageSharp.fluid} />
         </StyledExternalLink>
         <StyledExternalLink href={'https://t.me/LeapNow'} target="_blank">
@@ -602,7 +551,15 @@ const ProductsSection = props => {
         <StyledExternalLink href={'https://www.reddit.com/r/LeapProtocol/ '} target="_blank">
           <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
         </StyledExternalLink>
-        </StyledItemRow>
+      <StyledItemRow/> */}
+      <StyledSocialRow>
+        <StyledSocialIcon url="https://discord.gg/KFgS9QsTCg" target="_blank"/>
+        <StyledSocialIcon url="https://twitter.com/LeapProtocol" target="_blank"/>
+        <StyledSocialIcon url="https://t.me/LeapNow" network="telegram" target="_blank"/>
+        <StyledSocialIcon url="https://www.reddit.com/r/LeapProtocol/" target="_blank"/>
+      </StyledSocialRow>
+
+      
     </>
   )
 }

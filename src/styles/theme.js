@@ -27,7 +27,7 @@ export const theme = darkMode => ({
   buttonBorder: darkMode ? `#FFFFFF30` : '#01010130',
 
   heroBG: darkMode
-    ? 'radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%)'
+    ? 'radial-gradient(76.02% 75.41% at 1.84% 0%, #00b4ce 0%, #021d43 100%)'
     : 'radial-gradient(76.02% 75.41% at 1.84% 0%, #FF3696 0%, #FFD8EB 100%);',
   gradientBG: darkMode
     ? 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 31.19%, rgba(0, 0, 0, 0) 100%)'
@@ -47,7 +47,7 @@ export const theme = darkMode => ({
 
   inputBackground: darkMode ? '#202124' : white,
   placeholderGray: darkMode ? '#5F5F5F' : '#E1E1E1',
-  shadowColor: darkMode ? '#000' : '#2F80ED',
+  shadowColor: darkMode ? '#000' : '#00b4ce',
 
   // grays
   concreteGray: darkMode ? '#292C2F' : '#FAFAFA',
@@ -89,7 +89,7 @@ export const theme = darkMode => ({
     green1: '#E6F3EC',
     green2: '#27AE60',
 
-    pink1: darkMode ? '#2F80ED' : '#FF007A',
+    pink1: darkMode ? '#00b4ce' : '#00b4ce',
     pink2: '#FF8EC4',
     pink3: '#FFD7EA',
 
@@ -98,8 +98,8 @@ export const theme = darkMode => ({
 
     red1: '#FF6871',
 
-    link: darkMode ? '#2F80ED' : '#FF007A',
-    invertedLink: darkMode ? '#2F80ED' : '#FF007A'
+    link: darkMode ? '#00b4ce' : '#00b4ce',
+    invertedLink: darkMode ? '#00b4ce' : '#00b4ce'
   },
 
   shadows: {

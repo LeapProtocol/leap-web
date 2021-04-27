@@ -79,6 +79,7 @@
     "react-markdown": "^6.0.0",
     "react-moment": "^0.9.7",
     "react-on-screen": "^2.1.1",
+    "react-social-icons": "^5.1.1",
     "react-social-sharing": "^3.0.1",
     "react-use-clipboard": "1.0.0",
     "reactstrap": "^8.9.0",
