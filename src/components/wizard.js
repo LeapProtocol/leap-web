@@ -51,7 +51,7 @@ const links = [
       {
         title: 'Liquidity Pool',
         // link: '/docs/v2/core-concepts/oracles/',
-        description: '60% of total supply is allocated to Liquidity Pool along with all funds raised during Presales',
+        description: '60% of total supply is allocated to Liquidity Pool along with all funds raised during Presales.',
         description2: "Liquidity Pool is locked in LEAP's smart contract which can be verified by the public.",
         icon: 'liquiditypool.png',
         isIconImage:true

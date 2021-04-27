@@ -453,10 +453,10 @@ const App = props => {
 
         <Button
           style={{
-            background: `#f5feff`,
             fontSize: '20px',
             color: '#00b4ce'
           }}
+          variant="outlined"
           onClick={getProvider}
         >
           {connection ? signerAddress :"Connect to Web3"}
