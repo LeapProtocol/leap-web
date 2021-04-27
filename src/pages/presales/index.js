@@ -494,7 +494,7 @@ const App = props => {
             {buyButtonLoading ? 
               <CircularProgress/> : 
               <Button
-                outlined
+              variant="outlined"
                 disabled={!valContribution || !valBeneficiary || !allowBuy || !connection}
                 onClick={buyPresalesTokens}
                 style={{
@@ -508,11 +508,12 @@ const App = props => {
             {withdrawButtonLoading ?
               <CircularProgress/> :
               <Button
-                outlined
+              variant="outlined"
                 disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection}
                 onClick={withdrawPresalesTokens}
                 style={{
-                  fontSize: '20px'
+                  fontSize: '20px',
+                  margin: '15px'
                 }}
               >
                 Withdraw
@@ -522,7 +523,7 @@ const App = props => {
             {refundButtonLoading ?
               <CircularProgress/> :
               <Button
-                outlined
+              variant="outlined"
                 disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection}
                 onClick={refundCapNotReached}
                 style={{
