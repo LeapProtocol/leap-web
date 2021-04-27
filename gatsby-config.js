@@ -104,8 +104,8 @@ module.exports = {
               title: 'LeapProtocol', // website title
               separator: '|', // default
               author: '@LeapDev',
-              background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
-              fontColor: '#FF3093', // defaults to white (#ffffff)
+              background: require.resolve('./static/images/twitter_card_bg.png'), // path to 1200x630px file or hex code, defaults to black (#000000)
+              fontColor: '#19bbd2', // defaults to white (#ffffff)
               fontStyle: 'sans-serif', // default
               titleFontSize: 124, // default
               fontFile: require.resolve('./static/fonts/GT-Haptik-Regular.ttf') // will override fontStyle - path to custom TTF font
