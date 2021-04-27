@@ -453,11 +453,11 @@ const App = props => {
 
         <Button
           style={{
-            background: `#f5feff`,
             fontSize: '20px',
             color: '#00b4ce',
             borderRadius: '10px'
           }}
+          variant="outlined"
           onClick={getProvider}
           variant="outlined"
         >
