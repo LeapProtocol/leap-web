@@ -257,7 +257,7 @@ const App = props => {
               signer
             )
           }
-
+          
           let _tokensAmount = await leap.getTokens(_address);
           _tokensAmount = utils.formatUnits(_tokensAmount, 9);
 
@@ -480,7 +480,7 @@ const App = props => {
           {(!presalesStart && connection) ?
             [
               <StyledBodyTitle>Presales starts in</StyledBodyTitle>,
-              <Countdown date='2021-04-30T03:24:00'/>
+              <Countdown date='2021-05-02T09:00:00'/>
             ]
           :
           <StyledBodyTitle>Presales</StyledBodyTitle>
