@@ -477,14 +477,9 @@ const App = props => {
 
       <StyledBody>
         <StyledTitle>
-          {(!presalesStart && connection) ?
-            [
-              <StyledBodyTitle>Presales starts in</StyledBodyTitle>,
-              <Countdown date='2021-05-02T09:00:00'/>
-            ]
-          :
-          <StyledBodyTitle>Presales</StyledBodyTitle>
-          }
+          <StyledBodyTitle>Presales Starts In</StyledBodyTitle>
+          <Countdown date='2021-05-02T09:00:00'/>
+
 
           {presalesEnd ? <Alert variant="outlined" severity="warning">Presales has already ended</Alert> : " "}
           <StyledBodySubTitle style={{ textAlign: "center"}}>
