@@ -355,7 +355,7 @@ const IndexPage = props => {
       <SEO
         title="Home"
         path={props.location.pathname}
-        description={'Community-driven fair token initiative'}
+        description={'Leap Protocol, a community-driven fair token initiative'}
       />
       <StyledBody>
         <StyledTitle>

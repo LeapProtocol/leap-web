@@ -472,7 +472,7 @@ const App = props => {
       <SEO
         title="Presales"
         path={props.location.pathname}
-        description={'A fully decentralized protocol for automated liquidity provision on Ethereum'}
+        description={'Leap Protocol presales will start 2nd May, 1am GMT+0'}
       />
 
       <StyledBody>
