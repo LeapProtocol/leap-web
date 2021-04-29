@@ -19,6 +19,6 @@ If a swap failed with INSUCCIFIENT_OUTPUT_AMOUNT, remember that [Slippage tolera
 ![PancakeSwap error](./pancakeswap_error.jpg "PancakeSwap Error")
 
 # Why Presales?
-We need to raise 50 BNB (for 200m LEAP) in order to provide liquidity to PancakeSwap. We choose to crowdfund this 50 BNB instead letting someone sponsor us directly as letting someone sponsor us directly would mean that the sponsor will own 200m (20%) of LEAP. Instead, by crowdfunding this 50 BNB, each wallet is limited to 0.5 BNB, 1m (0.2%) of LEAP. This minimizes the risk of whales dumping.
+We need to raise 50 BNB (for 200m LEAP) in order to provide liquidity to PancakeSwap. We choose to crowdfund this 50 BNB instead letting someone sponsor us directly as letting someone sponsor us directly would mean that the sponsor will own 200m (20%) of LEAP. Instead, by crowdfunding this 50 BNB, each wallet is limited to 0.5 BNB, 2m (0.2%) of LEAP. This minimizes the risk of whales dumping.
 
 You can participate in the presales either via the [presales](/presales) page or by interacting directly with the smart contract via [bscscan](https://bscscan.com). The 50 BNB sent to LEAP smart contract will not be accessible in any way by the dev other than using it for LP provision or refunding (if crowdfund target is not reached).
