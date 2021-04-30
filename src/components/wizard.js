@@ -11,7 +11,8 @@ const links = [
       {
         title: 'Automatic Farming',
         // link: '/docs/v2/smart-contract-integration/trading-from-a-smart-contract/',
-        description: ' 10% of every transaction is redistributed to all token holders excluding Liquidity Pool. This prevents price of LEAP from decreasing.',
+        description: '10% of every transaction is redistributed to all token holders.',
+        description2: 'Liquidity Pool is excluded from token redistribution. This prevents price of LEAP from decreasing.',
         tag: 'reference',
         icon: 'autofarming.png',
         isIconImage:true
@@ -19,7 +20,7 @@ const links = [
       {
         title: 'Automatic Burn',
         // link: '/docs/v2/smart-contract-integration/providing-liquidity/',
-        description: '10% of total supply is allocated to the burn address 0x0000000000000000000000000000000000000000. Token redistributed to this is automatically burnt.',
+        description: '10% of total supply is allocated to the burn address 0x0000000000000000000000000000000000000000. Token redistributed to this address is automatically burnt.',
         tag: 'tutorial',
         icon: 'burner.png',
         isIconImage:true
@@ -36,7 +37,7 @@ const links = [
       {
         title: 'Fair Launch',
         // link: '/docs/v2/core-concepts/oracles/',
-        description: 'Presales and PancakeSwap listing time and date is broadcasted publicly. Nobody has additional advantage.',
+        description: 'Presales and PancakeSwap listing time and date is broadcasted publicly. Nobody has any unfair advantage.',
         icon: 'fairlaunch.png',
         isIconImage:true
       },
@@ -44,65 +45,17 @@ const links = [
         title: 'Anti-Rug',
         // link: '/docs/v2/core-concepts/oracles/',
         description: 'Presales - Contribution capped at 0.5 BNB, 2 million LEAP token per wallet address.',
-        description2:'PancakeSwap - Transaction limit of 1 million LEAP per transaction is applied for T+1. This prevents whales from owning huge percentage of LEAP.',
+        description2:'PancakeSwap - Transaction limit of 10 million LEAP per transaction is applied. This prevents whales from owning huge percentage of LEAP.',
         icon: 'antirug.png',
         isIconImage:true
       },
       {
         title: 'Liquidity Pool',
         // link: '/docs/v2/core-concepts/oracles/',
-        description: '60% of total supply is allocated to Liquidity Pool along with all funds raised during Presales.',
-        description2: "Liquidity Pool is locked in LEAP's smart contract which can be verified by the public.",
+        description: '60% of total supply is allocated to Liquidity Pool along with all funds raised during Presales. This creates a fully saturated Liquidity Pool from day 1.',
+        description2: "Liquidity Pool token will be locked in LEAP's smart contract which can be verified by the public easily.",
         icon: 'liquiditypool.png',
         isIconImage:true
-      }
-    ]
-  },
-  {
-    name: 'Traders',
-    sublinks: [
-      {
-        title: 'Using the interface',
-        link: '/docs/v2/user-guide/',
-        description: 'The comprehensive web app user guide.',
-        tag: 'tutorial'
-      },
-      {
-        title: 'Glossary',
-        link: '/docs/v2/protocol-overview/glossary',
-        description: 'An overview of the terms used in these docs and on the interface',
-        tag: 'reference'
-      },
-      {
-        title: 'Understanding prices',
-        link: '/docs/v2/swaps/pricing/',
-        description: 'How the interface calculates prices for swaps.',
-        tag: 'guide'
-      }
-    ]
-  },
-  {
-    name: 'Liquidity',
-    sublinks: [
-      {
-        title: 'Anatomy of a Uniswap Pool',
-        link: '/docs/v2/pools',
-        description: 'An overview of what a Uniswap liquidity pool.'
-      },
-      {
-        title: 'Understanding Liquidity Returns',
-        link: '/docs/v2/pools/understanding-returns',
-        description: 'Udnerstand the economics of your returns.'
-      }
-    ]
-  },
-  {
-    name: 'Tokens',
-    sublinks: [
-      {
-        title: 'Core Concepts',
-        link: '/docs/v2/protocol-overview',
-        description: 'A high level technical overview of the Uniswap protocol.'
       }
     ]
   }
