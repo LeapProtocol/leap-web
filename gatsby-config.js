@@ -105,7 +105,7 @@ module.exports = {
               separator: '|', // default
               author: '@LeapDev',
               background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
-              fontColor: '#FF3093', // defaults to white (#ffffff)
+              fontColor: '#19bbd2', // defaults to white (#ffffff)
               fontStyle: 'sans-serif', // default
               titleFontSize: 124, // default
               fontFile: require.resolve('./static/fonts/GT-Haptik-Regular.ttf') // will override fontStyle - path to custom TTF font
@@ -133,7 +133,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/fav.svg` // This path is relative to the root of the site.
+        icon: `src/images/fav.png` // This path is relative to the root of the site.
       }
     },
     // {

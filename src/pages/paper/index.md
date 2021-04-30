@@ -2,7 +2,7 @@
 title: Leap Protocol
 ---
 
-**Description of Leap here**
+**Community-Driven Fair Token Initiative**
 
 _NOTE: This document is under development. Please check regularly for updates!_
 

@@ -11,7 +11,6 @@ import InlineCode from './inlineCode'
 import InlineCard from '../inlineCard'
 import InlineBoxLink from '../inlineBoxLink'
 import Wizard from '../wizard'
-import Video from '../video'
 import Simulator from '../Simulator'
 
 import '../../styles/katex.css'
@@ -25,7 +24,6 @@ const components = {
   InlineCard,
   InlineBoxLink,
   Wizard,
-  Video,
   Simulator,
   code: Code,
   inlineCode: InlineCode

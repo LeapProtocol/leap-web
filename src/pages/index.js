@@ -293,13 +293,6 @@ const IndexPage = props => {
           siteUrl
         }
       }
-      newYear: file(relativePath: { eq: "newyear.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-        }
-      }
       banner: file(relativePath: { eq: "Banner.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
@@ -307,35 +300,7 @@ const IndexPage = props => {
           }
         }
       }
-      swap: file(relativePath: { eq: "swap.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
       info: file(relativePath: { eq: "info.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      socks: file(relativePath: { eq: "socks.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      sybil: file(relativePath: { eq: "sybil.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      tokenlists: file(relativePath: { eq: "tokenlists.png" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
             ...GatsbyImageSharpFluid
@@ -370,13 +335,6 @@ const IndexPage = props => {
           }
         }
       }
-      discourse: file(relativePath: { eq: "discourse.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
       thin: file(relativePath: { eq: "Leap.png" }) {
         childImageSharp {
           fluid(maxWidth: 1200) {
@@ -397,7 +355,7 @@ const IndexPage = props => {
       <SEO
         title="Home"
         path={props.location.pathname}
-        description={'Community driven fair token initiative'}
+        description={'Leap Protocol, a community-driven fair token initiative'}
       />
       <StyledBody>
         <StyledTitle>
@@ -460,7 +418,7 @@ const IndexPage = props => {
             </Button> */}
           </StyledItemRow>
         </StyledTitle>
-        <ProtocolData />
+        {/* <ProtocolData /> */}
         <ProductsSection data={data} props={props} />
         <br/>
         <br/>
@@ -519,7 +477,6 @@ const DeveloperSection = props => {
 const ProductsSection = props => {
   return (
     <>
-
       <StyledSectionTitle>We advocate FAIR PLAY</StyledSectionTitle>
       <StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
         <Wizard />

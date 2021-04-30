@@ -236,7 +236,7 @@ var data = [
   {"name":"Presales" , "link":"/presales"},
   {"name":"White Paper" , "link":"/paper"},
   // {"name":"How to Buy" , "link":""}, 
-  {"name":"Smart Contract" , "link":""},
+  {"name":"Smart Contract" , "link":"https://bscscan.com/address/0xa880012d4F4E9622CC8Fa9d20797Cf172156A0E2#contracts", "target":"_blank"},
   {"name":"FAQ","link":"/faq"},
 ]
 

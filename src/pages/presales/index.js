@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextField, Grid, Card, CardContent, CircularProgress } from '@material-ui/core';
+import { Button, TextField, Grid, Card, CardContent, CircularProgress, Dialog, List, ListItem, ListItemText, Snackbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Alert } from '@material-ui/lab';
@@ -161,6 +161,37 @@ const StyledItemRow = styled.nav`
   }
 `
 
+function SimpleDialog(props) {
+  const { setShowDialog, showDialog, signerAddress, getProvider, setCopied } = props;
+  const bscscanLink = "https://bscscan.com/address/" + signerAddress;
+
+  const handleGetProvider = () => {
+    setShowDialog(false);
+    getProvider();
+  }
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(signerAddress);
+    setCopied(true);
+  }
+
+  return (
+    <Dialog onClose={() => setShowDialog(false)} aria-labelledby="simple-dialog-title" open={showDialog}>
+      <List>
+      <ListItem button>
+          <ListItemText primary="Copy address" onClick={copyToClipboard}/>
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="View on bscscan" onClick={() => window.open(bscscanLink)}/>
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Change provider" onClick={handleGetProvider}/>
+        </ListItem>
+      </List>
+    </Dialog>
+  );
+}
+
 const App = props => {
   const [connection, setConnection] = useState(false);
   const [signerAddress, setSignerAddress] = useState(undefined);
@@ -194,6 +225,9 @@ const App = props => {
   const [contributed, setContributed] = useState(0);
   const [tokensAmount, setTokenAmounts] = useState(0);
 
+  const [showDialog, setShowDialog] = useState(0);
+  const [copied, setCopied] = useState(false);
+
   const cardClasses = useCardStyles();
 
   const [isDark] = useDarkMode();
@@ -223,7 +257,7 @@ const App = props => {
               signer
             )
           }
-
+          
           let _tokensAmount = await leap.getTokens(_address);
           _tokensAmount = utils.formatUnits(_tokensAmount, 9);
 
@@ -424,25 +458,28 @@ const App = props => {
       setIndvCap(false);
     }
   }
+
+  const handleSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setCopied(false);
+    setShowDialog(false);
+  };
   
   return (
     <Layout path={props.location.pathname}>
       <SEO
         title="Presales"
         path={props.location.pathname}
-        description={'A fully decentralized protocol for automated liquidity provision on Ethereum'}
+        description={'Leap Protocol presales will start 2nd May, 1am GMT+0'}
       />
 
       <StyledBody>
         <StyledTitle>
-          {(!presalesStart && connection) ?
-            [
-              <StyledBodyTitle>Presales starts in</StyledBodyTitle>,
-              <Countdown date='2021-04-30T03:24:00'/>
-            ]
-          :
-          <StyledBodyTitle>Presales</StyledBodyTitle>
-          }
+          <StyledBodyTitle>Presales Starts In</StyledBodyTitle>
+          <Countdown date='2021-05-02T09:00:00'/>
+
 
           {presalesEnd ? <Alert variant="outlined" severity="warning">Presales has already ended</Alert> : " "}
           <StyledBodySubTitle style={{ textAlign: "center"}}>
@@ -451,16 +488,46 @@ const App = props => {
           </StyledBodySubTitle>
         </StyledTitle>
 
-        <Button
-          style={{
-            fontSize: '20px',
-            color: '#00b4ce'
-          }}
-          variant="outlined"
-          onClick={getProvider}
-        >
-          {connection ? signerAddress :"Connect to Web3"}
-        </Button>
+
+        {!connection ?
+          [<Button
+            style={{
+              fontSize: '20px',
+              color: '#00b4ce',
+              borderRadius: '10px'
+            }}
+            onClick={getProvider}
+            variant="outlined"
+          >
+            Connect to Web3
+          </Button> ]:
+          [<Button
+            style={{
+              fontSize: '20px',
+              color: '#00b4ce',
+              borderRadius: '10px'
+            }}
+            onClick={() => setShowDialog(true)}
+            variant="outlined"
+          >
+            {"Connected to " + signerAddress.substring(0, 8) + "..."}
+          </Button>]      
+        }
+
+        <SimpleDialog 
+          setCopied={setCopied} 
+          setShowDialog={setShowDialog} 
+          showDialog={showDialog} 
+          signerAddress={signerAddress} 
+          getProvider={getProvider} 
+        />
+
+      <Snackbar open={copied} autoHideDuration={3000} onClose={handleSnackbar}>
+        <Alert onClose={handleSnackbar} severity="success">
+          {"Copied " + signerAddress + " to clipboard!"}
+        </Alert>
+      </Snackbar>
+
         <br></br>
         <ThemeProvider theme={theme}>
           <Grid>
@@ -494,7 +561,7 @@ const App = props => {
             {buyButtonLoading ? 
               <CircularProgress/> : 
               <Button
-                outlined
+              variant="outlined"
                 disabled={!valContribution || !valBeneficiary || !allowBuy || !connection}
                 onClick={buyPresalesTokens}
                 style={{
@@ -508,11 +575,12 @@ const App = props => {
             {withdrawButtonLoading ?
               <CircularProgress/> :
               <Button
-                outlined
+              variant="outlined"
                 disabled={!(presalesEnd && capReached) || !valBeneficiary || !connection}
                 onClick={withdrawPresalesTokens}
                 style={{
-                  fontSize: '20px'
+                  fontSize: '20px',
+                  margin: '15px'
                 }}
               >
                 Withdraw
@@ -522,7 +590,7 @@ const App = props => {
             {refundButtonLoading ?
               <CircularProgress/> :
               <Button
-                outlined
+              variant="outlined"
                 disabled={!(presalesEnd && !capReached) || !valBeneficiary || !connection}
                 onClick={refundCapNotReached}
                 style={{
