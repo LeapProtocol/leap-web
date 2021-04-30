@@ -219,7 +219,7 @@ export default function Menu(props) {
         // isOpen={isOpen}
       >
         
-        <a href={props.data.link}><span style={{ marginRight: '0.25rem' }}>{props.data.name} </span></a>
+        <a href={props.data.link} target={props.data.target}><span style={{ marginRight: '0.25rem' }}>{props.data.name} </span></a>
         {/* {isOpen ? (
           <MenuFlyout>
             {props.data.sublinks.map((item, index) => {
