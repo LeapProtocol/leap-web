@@ -478,7 +478,7 @@ const App = props => {
       <StyledBody>
         <StyledTitle>
           <StyledBodyTitle>Presales Starts In</StyledBodyTitle>
-          <Countdown date='2021-05-02T09:00:00'/>
+          <Countdown/>
 
 
           {presalesEnd ? <Alert variant="outlined" severity="warning">Presales has already ended</Alert> : " "}
