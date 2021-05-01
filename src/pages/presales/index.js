@@ -536,9 +536,9 @@ const App = props => {
                 label="Beneficiary Address"
                 placeholder="Enter a valid BNB address"
                 variant="outlined"
+                style={{marginBottom: '10px'}}
                 fullWidth={true}
             />
-
             <TextField
               onChange={handleContribution}
               label="Amount to Contribute (BNB)"
