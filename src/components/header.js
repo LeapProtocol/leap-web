@@ -233,7 +233,7 @@ const Header = props => {
   }, [isMenuOpen, updateIsMenuOpen, matches])
 
 var data = [
-  {"name":"Presales" , "link":"/presales"},
+  // {"name":"Presales" , "link":"/presales"},
   {"name":"White Paper" , "link":"/paper"},
   // {"name":"How to Buy" , "link":""}, 
   {"name":"Smart Contract" , "link":"https://bscscan.com/address/0xa880012d4F4E9622CC8Fa9d20797Cf172156A0E2#contracts", "target":"_blank"},
@@ -273,8 +273,9 @@ var data = [
               background: `linear-gradient(128.17deg, #00ce81 -14.78%, #00b4ce 110.05%)`,
               color: 'white'
             }}
-            to="/presales"
+            to="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A"
             as={Link}
+            target="_blank"
           >
             Take the LEAP
           </StyledTradeLink>

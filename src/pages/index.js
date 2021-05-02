@@ -381,8 +381,9 @@ const IndexPage = props => {
                 color: 'white',
                 fontSize: '20px'
               }}
-              to="/presales"
+              to="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A"
               as={Link}
+              target="_blank"
             >
               Take the LEAP
             </Button>
@@ -406,16 +407,6 @@ const IndexPage = props => {
             >
               FAQ
             </Button>
-            {/* <Button
-              outlined
-              to="/presales"
-              as={Link}
-              style={{
-                fontSize: '20px'
-              }}
-            >
-              Presales
-            </Button> */}
           </StyledItemRow>
         </StyledTitle>
         {/* <ProtocolData /> */}
