@@ -506,7 +506,14 @@ const ProductsSection = props => {
           <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
         </StyledExternalLink>
       <StyledItemRow/> */}
-      
+
+      <br/><br/>
+      <StyledSocialRow>
+          <StyledSocialIcon url="https://discord.gg/KFgS9QsTCg" target="_blank"/>
+          <StyledSocialIcon url="https://twitter.com/LeapProtocol" target="_blank"/>
+          <StyledSocialIcon url="https://t.me/LeapNow" network="telegram" target="_blank"/>
+          <StyledSocialIcon url="https://www.reddit.com/r/LeapProtocol/" target="_blank"/>
+        </StyledSocialRow>
 
       
     </>
