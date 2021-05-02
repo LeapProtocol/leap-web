@@ -65,7 +65,7 @@ const StyledTitle = styled.div`
 
 const StyledBodyTitle = styled.h1`
   font-size: 100px;
-  margin: 4rem auto;
+  // margin: 4rem auto;
   pointer-events: none;
   white-space: wrap;
   overflow-wrap: normal;
@@ -188,7 +188,6 @@ const StyledItemRow = styled.nav`
 const StyledSocialRow = styled.div`
   display: flex;
   justify-content:center;
-  height: 20px;
   width: 100%;
 `
 
@@ -357,7 +356,14 @@ const IndexPage = props => {
         path={props.location.pathname}
         description={'Leap Protocol, a community-driven fair token initiative'}
       />
+      
       <StyledBody>
+        <StyledSocialRow>
+          <StyledSocialIcon url="https://discord.gg/KFgS9QsTCg" target="_blank"/>
+          <StyledSocialIcon url="https://twitter.com/LeapProtocol" target="_blank"/>
+          <StyledSocialIcon url="https://t.me/LeapNow" network="telegram" target="_blank"/>
+          <StyledSocialIcon url="https://www.reddit.com/r/LeapProtocol/" target="_blank"/>
+        </StyledSocialRow>
         <StyledTitle>
           {/*<StyledImgSection>
             <MiniNewInfo to="">
@@ -475,7 +481,7 @@ const ProductsSection = props => {
 
       <StyledSectionTitle>Road Map</StyledSectionTitle>
       <StyledBodySubText>
-        Every LEAP is a story, a journey, an united effort by the community.      
+        Every LEAP is a story, a journey, a united effort by the community.      
       </StyledBodySubText>
       <StyledSectionFlex style={{ paddingBottom: '0px', paddingTop: '1rem' }}>
         <Wizard2 />
@@ -500,12 +506,7 @@ const ProductsSection = props => {
           <StyledProductImage fadeIn={false} fluid={props.data.reddit.childImageSharp.fluid} />
         </StyledExternalLink>
       <StyledItemRow/> */}
-      <StyledSocialRow>
-        <StyledSocialIcon url="https://discord.gg/KFgS9QsTCg" target="_blank"/>
-        <StyledSocialIcon url="https://twitter.com/LeapProtocol" target="_blank"/>
-        <StyledSocialIcon url="https://t.me/LeapNow" network="telegram" target="_blank"/>
-        <StyledSocialIcon url="https://www.reddit.com/r/LeapProtocol/" target="_blank"/>
-      </StyledSocialRow>
+      
 
       
     </>

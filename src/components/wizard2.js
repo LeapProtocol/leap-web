@@ -24,7 +24,7 @@ const links = [
       {
         title: 'Q4 2021',
         // link: '/docs/v2/core-concepts/flash-swaps/',
-        description: '- Become a globally recognise charity institution \n- Incorporate charity into the core of LEAP \n- Full-on incorporation of various dApps including NFT & DeFi',
+        description: '- Become a globally recognised charity institution \n- Incorporate charity into the core of LEAP \n- Full-on incorporation of various dApps including NFT & DeFi',
         tag: 'guide',
         icon: '🗓️'
       }
