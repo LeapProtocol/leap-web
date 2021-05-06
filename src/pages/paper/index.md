@@ -53,7 +53,7 @@ During presales, the contributions and withdrawable presales tokens amount are c
 Transactions of LEAP are taxed with a fee. Although the tax fee is a variable that can be tuned by the dev team, a maximum tax fee of 10% of the transaction amount is set in the smart contract. This means that users cannot be taxed more than 10% of the transaction amount.
 
 ### Maximum Transaction Limit
-Every transaction of LEAP is limited to 1 million LEAP. This discourages whales from mass dumping or mass pumping.
+Every transaction of LEAP is limited to 10 million LEAP. This discourages whales from mass dumping or mass pumping.
 
 ### Liquidity Provider Token Time Lock
 The Pancakeswap Liquidity Provider (LP) tokens will be sent into the LEAP smart contract to be locked for a certain period of time. Building this anti-rugpull mechanism without relying on third party services introduces another level of security. Locking the LP tokens in the smart contract allows this to be easily verified on the bscscan blockchain explorer. The immutability property of smart contracts ensures that the LP tokens cannot be removed before the set deadline.

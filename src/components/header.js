@@ -205,6 +205,24 @@ const Header = props => {
     // }, TIMEOUT_DELAY)
   })
 
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          menulinks {
+            name
+            sublinks {
+              description
+              name
+              link
+            }
+          }
+          title
+        }
+      }
+    }
+  `)
+  
   useLayoutEffect(() => {
     // Get original body overflow
     const originalStyle = window.getComputedStyle(document.body).overflow
@@ -232,13 +250,13 @@ const Header = props => {
     }
   }, [isMenuOpen, updateIsMenuOpen, matches])
 
-var data = [
-  // {"name":"Presales" , "link":"/presales"},
-  {"name":"White Paper" , "link":"/paper"},
-  // {"name":"How to Buy" , "link":""}, 
-  {"name":"Smart Contract" , "link":"https://bscscan.com/address/0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A#contracts", "target":"_blank"},
-  {"name":"FAQ","link":"/faq"},
-]
+// var data = [
+//   // {"name":"Presales" , "link":"/presales"},
+//   {"name":"White Paper" , "link":"/paper"},
+//   // {"name":"How to Buy" , "link":""}, 
+//   {"name":"Smart Contract" , "link":"https://bscscan.com/address/0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A#contracts", "target":"_blank"},
+//   {"name":"FAQ","link":"/faq"},
+// ]
 
   return (
     <StyledHeader open={isMenuOpen} showBG={headerBG}>
@@ -257,9 +275,13 @@ var data = [
         {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
       </MenuToggle>
       <StyledNav ref={node} open={isMenuOpen}>
-        {data.map(item => {
+        {data.site.siteMetadata.menulinks.map(item => {
           return <Menu key={item.name} data={item} />
         })}
+        
+        {/* {data.map(item => {
+          return <Menu key={item.name} data={item} />
+        })} */}
 
         <HideSmall>
           <StyledButton type="button" onClick={toggleDarkMode}>

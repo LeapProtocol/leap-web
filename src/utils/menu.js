@@ -1,71 +1,38 @@
 const menu = [
   {
-    name: 'Products',
+    name: 'PancakeSwap',
     sublinks: [
-      {
-        name: 'App',
-        link: 'https://app.uniswap.org/#/',
-        description: 'Swap tokens and supply liquidity',
-      },
-      {
-        name: 'Analytics',
-        link: 'https://uniswap.info/',
-        description: 'Uniswap analytics and historical data',
-      },
-      {
-        name: 'Token Lists',
-        link: 'https://tokenlists.org/',
-        description: 'A new Ethereum token list standard.',
-      },
-      {
-        name: 'Unisocks',
-        link: 'https://unisocks.exchange/',
-        description: 'Dynamically priced socks',
-      },
-      {
-        name: 'Sybil',
-        link: 'https://sybil.org/#/',
-        description: 'Identities for governance',
-      },
-      {
-        name: 'Unipig',
-        link: 'https://unipig.exchange/',
-        description: 'Optimistic rollup demo',
-      },
-    ],
+      { name: 'PancakeSwap', link: 'https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A' },
+    ]
   },
   {
-    name: 'Developers',
+    name: 'Smart Contract',
     sublinks: [
-      {
-        name: 'Documentation',
-        link: '/docs/v2',
+      { 
+        name: 'Leap Protocol',
+        link: 'https://bscscan.com/address/0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A#code',
+        description: 'Leap Protocol Smart Contract Address',
       },
-      { name: 'GitHub', link: 'https://github.com/Uniswap' },
-      { name: 'V2 Whitepaper', link: '/whitepaper.pdf' },
-      { name: 'V3 Whitepaper', link: '/whitepaper-v3.pdf' },
-      { name: 'Audit', link: '/audit.html' },
-      { name: 'Bug Bounty', link: '/bug-bounty' },
-    ],
+      { 
+        name: 'Leap Token',
+        link: 'https://bscscan.com/token/0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A',
+        description: 'Leap Token Address',
+      },
+    ]
   },
   {
-    name: 'Governance',
+    name: 'White Paper',
     sublinks: [
-      {
-        name: 'UNI Token',
-        link: '/blog/uni',
-      },
-      { name: 'Forum', link: 'https://gov.uniswap.org/' },
-      { name: 'Voting Portal', link: 'https://app.uniswap.org/#/vote' },
-      { name: 'Documentation', link: '/docs/v2/governance/overview' },
-    ],
+      { name: 'White Paper', link: '/paper' },
+    ]
   },
   {
     name: 'Community',
     sublinks: [
-      { name: 'Discord', link: 'https://discord.gg/FCfyBSbCU5' },
-      { name: 'Twitter', link: 'https://twitter.com/Uniswap' },
-      { name: 'Reddit', link: 'https://www.reddit.com/r/Uniswap' },
+      { name: 'Discord', link: 'https://discord.gg/KFgS9QsTCg' },
+      { name: 'Twitter', link: 'https://twitter.com/LeapProtocol' },
+      { name: 'Reddit', link: 'https://www.reddit.com/r/LeapProtocol' },
+      { name: 'Telegram', link: 'https://t.me/LeapNow' },
     ],
   },
   {
@@ -76,21 +43,9 @@ const menu = [
         link: '/blog',
       },
       {
-        name: 'Info',
-        link: '/about',
-      },
-      {
         name: 'FAQ',
         link: '/faq',
-      },
-      {
-        name: 'Jobs',
-        link: '/about#jobs',
-      },
-      {
-        name: 'Logo & Brand',
-        link: '/about#brand',
-      },
+      }
     ],
   },
 ]
