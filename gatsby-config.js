@@ -42,6 +42,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `blog`,
+        path: `${__dirname}/src/pages/blog/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `faq`,
         path: `${__dirname}/src/pages/faq/`
       }
@@ -88,6 +95,7 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
           default: require.resolve('./src/layouts'),
+          blog: require.resolve(`./src/layouts/blogPost`),
           faq: require.resolve(`./src/layouts/faq`),
           paper: require.resolve(`./src/layouts/paper`)
         },
@@ -136,70 +144,70 @@ module.exports = {
         icon: `src/images/fav.png` // This path is relative to the root of the site.
       }
     },
-    // {
-    //   resolve: `gatsby-plugin-feed`,
-    //   options: {
-    //     query: `
-    //       {
-    //         site {
-    //           siteMetadata {
-    //             title
-    //             description
-    //             siteUrl
-    //             site_url: siteUrl
-    //           }
-    //         }
-    //       }
-    //     `,
-    //     feeds: [
-    //       {
-    //         serialize: ({ query: { site, allMdx } }) => {
-    //           return allMdx.edges.map(edge => {
-    //             return {
-    //               description: edge.node.frontmatter.previewText,
-    //               title: edge.node.frontmatter.title,
-    //               date: edge.node.frontmatter.date,
-    //               url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-    //               guid: site.siteMetadata.siteUrl + edge.node.fields.slug
-    //             }
-    //           })
-    //         },
-    //         query: `
-    //         {
-    //           allMdx(filter: {fileAbsolutePath: {regex: "/blog/"}}, sort: {order: DESC, fields: frontmatter___date}) {
-    //             edges {
-    //               node {
-    //                 id
-    //                 frontmatter {
-    //                   date
-    //                   title
-    //                   previewText
-    //                 }
-    //                 fields {
-    //                   slug
-    //                 }
-    //                 rawBody
-    //               }
-    //             }
-    //           }
-    //         }
-    //         `,
-    //         output: '/rss.xml',
-    //         title: 'Uniswap Blog RSS Feed'
-    //       }
-    //     ]
-    //   }
-    // },
-    // 'gatsby-plugin-eslint',
-    // {
-    //   resolve: `gatsby-plugin-algolia-docsearch-appid`,
-    //   options: {
-    //     apiKey: '8962240e69e6d23a88432f501c115470',
-    //     indexName: 'uniswap_v2_docs',
-    //     appId: 'VZ0CVS8XCW',
-    //     inputSelector: 'blank' // use dummy selector to avoid double render
-    //   }
-    // }
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                return {
+                  description: edge.node.frontmatter.previewText,
+                  title: edge.node.frontmatter.title,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug
+                }
+              })
+            },
+            query: `
+            {
+              allMdx(filter: {fileAbsolutePath: {regex: "/blog/"}}, sort: {order: DESC, fields: frontmatter___date}) {
+                edges {
+                  node {
+                    id
+                    frontmatter {
+                      date
+                      title
+                      previewText
+                    }
+                    fields {
+                      slug
+                    }
+                    rawBody
+                  }
+                }
+              }
+            }
+            `,
+            output: '/rss.xml',
+            title: 'Leap Protocol Blog RSS Feed'
+          }
+        ]
+      }
+    },
+    'gatsby-plugin-eslint',
+    {
+      resolve: `gatsby-plugin-algolia-docsearch-appid`,
+      options: {
+        apiKey: '8962240e69e6d23a88432f501c115470',
+        indexName: 'leapprotocol_docs',
+        appId: 'VZ0CVS8XCW',
+        inputSelector: 'blank' // use dummy selector to avoid double render
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

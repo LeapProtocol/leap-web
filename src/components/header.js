@@ -39,7 +39,7 @@ const StyledNav = styled.nav`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   transition: right 0.25s ease;
   @media (max-width: 960px) {
     position: fixed;
@@ -47,7 +47,6 @@ const StyledNav = styled.nav`
     right: ${({ open }) => (open ? '0px' : '-100%')};
     align-items: flex-start;
     flex-wrap: wrap;
-    flex-direction: column;
     -webkit-overflow-scrolling: touch;
     background-color: ${({ theme }) => theme.colors.grey1};
     width: 100%;
@@ -205,6 +204,24 @@ const Header = props => {
     // }, TIMEOUT_DELAY)
   })
 
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          menulinks {
+            name
+            sublinks {
+              description
+              name
+              link
+            }
+          }
+          title
+        }
+      }
+    }
+  `)
+  
   useLayoutEffect(() => {
     // Get original body overflow
     const originalStyle = window.getComputedStyle(document.body).overflow
@@ -232,13 +249,13 @@ const Header = props => {
     }
   }, [isMenuOpen, updateIsMenuOpen, matches])
 
-var data = [
-  {"name":"Presales" , "link":"/presales"},
-  {"name":"White Paper" , "link":"/paper"},
-  // {"name":"How to Buy" , "link":""}, 
-  {"name":"Smart Contract" , "link":"https://bscscan.com/address/0xa880012d4F4E9622CC8Fa9d20797Cf172156A0E2#contracts", "target":"_blank"},
-  {"name":"FAQ","link":"/faq"},
-]
+// var data = [
+//   // {"name":"Presales" , "link":"/presales"},
+//   {"name":"White Paper" , "link":"/paper"},
+//   // {"name":"How to Buy" , "link":""}, 
+//   {"name":"Smart Contract" , "link":"https://bscscan.com/address/0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A#contracts", "target":"_blank"},
+//   {"name":"FAQ","link":"/faq"},
+// ]
 
   return (
     <StyledHeader open={isMenuOpen} showBG={headerBG}>
@@ -257,9 +274,13 @@ var data = [
         {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
       </MenuToggle>
       <StyledNav ref={node} open={isMenuOpen}>
-        {data.map(item => {
+        {data.site.siteMetadata.menulinks.map(item => {
           return <Menu key={item.name} data={item} />
         })}
+        
+        {/* {data.map(item => {
+          return <Menu key={item.name} data={item} />
+        })} */}
 
         <HideSmall>
           <StyledButton type="button" onClick={toggleDarkMode}>
@@ -273,8 +294,9 @@ var data = [
               background: `linear-gradient(128.17deg, #00ce81 -14.78%, #00b4ce 110.05%)`,
               color: 'white'
             }}
-            to="/presales"
+            to="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A"
             as={Link}
+            target="_blank"
           >
             Take the LEAP
           </StyledTradeLink>
