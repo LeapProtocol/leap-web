@@ -1,15 +1,14 @@
 const menu = [
   {
-    name: 'PancakeSwap',
-    sublinks: [
-      { name: 'PancakeSwap', link: 'https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A' },
-    ]
-  },
-  {
-    name: 'Smart Contract',
+    name: 'Leap Protocol',
     sublinks: [
       { 
-        name: 'Leap Protocol',
+        name: 'PancakeSwap',
+        link: 'https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A',
+        description: 'PancakeSwap Decentralized Exchange'
+      },
+      { 
+        name: 'Smart Contract',
         link: 'https://bscscan.com/address/0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A#code',
         description: 'Leap Protocol Smart Contract Address',
       },
@@ -18,12 +17,10 @@ const menu = [
         link: 'https://bscscan.com/token/0x153aaf397d37a20Efa9dc46e4cBa42583cB0007A',
         description: 'Leap Token Address',
       },
-    ]
-  },
-  {
-    name: 'White Paper',
-    sublinks: [
-      { name: 'White Paper', link: '/paper' },
+      {
+        name: 'White Paper',
+        link: '/paper',
+      }
     ]
   },
   {

@@ -39,7 +39,7 @@ const StyledNav = styled.nav`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   transition: right 0.25s ease;
   @media (max-width: 960px) {
     position: fixed;
@@ -47,7 +47,6 @@ const StyledNav = styled.nav`
     right: ${({ open }) => (open ? '0px' : '-100%')};
     align-items: flex-start;
     flex-wrap: wrap;
-    flex-direction: column;
     -webkit-overflow-scrolling: touch;
     background-color: ${({ theme }) => theme.colors.grey1};
     width: 100%;
