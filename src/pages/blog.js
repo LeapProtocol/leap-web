@@ -128,12 +128,12 @@ export const PostMetaData = styled.p`
 export const StyledImage = styled(Img)`
   width: 100%;
   border-radius: 12px;
-  height: 420px;
+  height: 100%;
   box-shadow: ${({ theme }) => theme.shadows.huge};
   border-radius: 20px;
   overflow: hidden;
   @media (max-width: 960px) {
-    height: 256px;
+    height: 100%;
   }
 `
 

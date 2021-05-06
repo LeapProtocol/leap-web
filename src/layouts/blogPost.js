@@ -296,7 +296,7 @@ const Blog = props => {
       />
 
       <StyledBlog id="blog-header">
-        {data.allMdx.edges
+        {/* {data.allMdx.edges
           .filter(({ node }) => {
             return node.fields.slug === props.path
           })
@@ -306,7 +306,7 @@ const Blog = props => {
                 <WrappedHeroImage fadeIn={false} fluid={node.frontmatter.featuredImage.childImageSharp.fluid} />
               </FixImage>
             )
-          })}
+          })} */}
 
         <PostHeader>
           <BlogLink to="/blog">{'Blog'}</BlogLink>

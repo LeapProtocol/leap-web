@@ -45,6 +45,6 @@ In the function withdrawCharityTokens and withdrawMarketingTokens, the smart con
 
 ![](./swap.png "Swapping BNB for LEAP token")
 
-1. BNB is sent from your adderss to PancakeSwap router 0x10ed43c718714eb63d5aa57b78b54704e256024e to be wrapped. 
+1. BNB is sent from your address to PancakeSwap router 0x10ed43c718714eb63d5aa57b78b54704e256024e to be wrapped. 
 2. PancakeSwap Router sends wrapped BNB (WBNB) to the LEAP:BNB LP 0xd96ab5a06b32bbf3f87c973c46a725f24aad95c3
 3. LEAP:BNB LP 0xd96ab5a06b32bbf3f87c973c46a725f24aad95c3 sends LEAP to your wallet address.
