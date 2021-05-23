@@ -11,7 +11,7 @@ _NOTE: This document is under development. Please check regularly for updates!_
 - [Design Principles](#design-principles)
 - [Token Economy](#token-economy)
   * [Token Distribution](#token-distribution)
-  * [Staking by Holding](#staking-by-holding)
+  * [Automatic Farming](#automatic-farming)
   * [Automatic Burn](#automatic-burn)
   * [Liquidity Pool](#liquidity-pool)
   * [Charity](#charity)
