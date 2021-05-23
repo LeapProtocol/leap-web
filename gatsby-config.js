@@ -61,6 +61,13 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `giveaway`,
+        path: `${__dirname}/src/pages/giveaway/`
+      }
+    },
+    {
       resolve: `gatsby-plugin-page-creator`,
       options: {
         path: `${__dirname}/src/pages`
