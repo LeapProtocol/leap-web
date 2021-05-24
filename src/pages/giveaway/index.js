@@ -11,7 +11,7 @@ import { useDarkMode } from '../../contexts/Application'
 import * as queryString from "query-string";
 import Countdown from '../../components/countdown';
 import { Button } from '../../components/button'
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 
 
 const useCardStyles = makeStyles({
@@ -197,4 +197,24 @@ const App = props => {
   );
 }
 
-export default App;
+export default (props) => {
+  const parsed = queryString.parse(props.location.search);
+  if (parsed.code == undefined) {
+    parsed.code = 976852024;
+  }
+
+  const telegramLink = "https://t.me/LeapGiveawayBot?start=" + parsed.code;
+
+  <SEO
+    title="Home"
+    description={'Leap Protocol giveaway. 500 LEAP to every participant, 10 BNB to lucky winner.'}
+    image={'leap-giveaway.jpg?v=1'}
+  />
+
+  useEffect(() => {
+    navigate(telegramLink);
+  }, []);
+  return null;
+};
+
+// export default App;
